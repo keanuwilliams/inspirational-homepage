@@ -20,7 +20,7 @@ const getTimeString = (militaryTime) => {
   }
   // Add a leading zero if hours and minutes are one digit
   hours = hours < 10 ? `0${hours}` : `${hours}`;
-  minutes = minutes < 10 ? `0{minutes}` : `${minutes}`;
+  minutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
   timeString = `${hours}:${minutes}`;
   if (!militaryTime) {
     timeString += AMPM;

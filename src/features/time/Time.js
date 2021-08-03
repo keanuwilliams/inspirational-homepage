@@ -5,7 +5,7 @@ import {
   selectTime
 } from './timeSlice';
 
-export const Time = () => {
+export default function Time() {
   const time = useSelector(selectTime);
   const dispatch = useDispatch();
 
