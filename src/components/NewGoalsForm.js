@@ -4,6 +4,7 @@ import { addGoal } from '../features/goals/goalsSlice';
 
 export default function NewGoalsForm() {
   const [name, setName] = useState("");
+  const [goalIndex, setGoalIndex] = useState(0);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -14,17 +15,20 @@ export default function NewGoalsForm() {
 
     dispatch(
       addGoal({
+        id: goalIndex,
         name: name
       })
     );
 
+    setGoalIndex(goalIndex+1);
     setName("");
   };
 
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <input 
+        <input
+          type="text"
           value={name}
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="What's on your mind?"

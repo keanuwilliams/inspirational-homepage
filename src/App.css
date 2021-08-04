@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  margin: 1em 2em;
 }
 
 .App-logo {
@@ -36,4 +36,11 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+/* App Stylings */
+.time {
+  font-size: 72px;
+  font-weight: 500;
+  text-decoration: none;
 }

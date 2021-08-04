@@ -10,7 +10,7 @@ export const goalsSlice = createSlice({
       state.goals.push(action.payload);
     },
     removeGoal: (state, action) => {
-      state.goals.map((goal) => goal !== action.payload);
+      state.goals = state.goals.map((goal) => goal.id !== action.payload.id);
     },
     completeGoal: (state, action) => {
       // complete after creating Goal, Goals, and Goal Form
