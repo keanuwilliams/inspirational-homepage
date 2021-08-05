@@ -15,6 +15,9 @@ const getTimeString = (militaryTime) => {
       hours -= 12;
       AMPM = "PM"
     } else {
+      if (hours === 0) {
+        hours += 12;
+      }
       AMPM = "AM"
     }
   }
