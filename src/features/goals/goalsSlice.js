@@ -10,10 +10,11 @@ export const goalsSlice = createSlice({
       state.goals.push(action.payload);
     },
     removeGoal: (state, action) => {
-      state.goals = state.goals.map((goal) => goal.id !== action.payload.id);
+      state.goals = state.goals.filter((goal) => goal.id !== action.payload.id);
     },
     completeGoal: (state, action) => {
-      // complete after creating Goal, Goals, and Goal Form
+      const goal = state.goals.find((goal) => goal.id === action.payload.id);
+      goal.complete = true;
     }
   }
 });

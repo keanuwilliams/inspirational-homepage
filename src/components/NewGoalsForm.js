@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from 'react-redux';
 import { addGoal } from '../features/goals/goalsSlice';
+import "../App.css";
 
 export default function NewGoalsForm() {
   const [name, setName] = useState("");
-  const [goalIndex, setGoalIndex] = useState(0);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -13,28 +14,34 @@ export default function NewGoalsForm() {
       return;
     }
 
+    const goalId = uuidv4();
+
     dispatch(
       addGoal({
-        id: goalIndex,
-        name: name
+        id: goalId,
+        name: name,
+        complete: false,
       })
     );
 
-    setGoalIndex(goalIndex+1);
     setName("");
   };
 
   return (
-    <section>
+    <div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="What's on your mind?"
-        />
+        <div className="input-group">
+            <input
+              required
+              className="input-text"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.currentTarget.value)}
+            />
+            <label>What's on your mind?</label>
+        </div>
       </form>
-    </section>
+    </div>   
   );
 
 }

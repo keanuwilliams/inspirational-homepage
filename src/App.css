@@ -38,9 +38,95 @@
   }
 }
 
-/* App Stylings */
+/* Time */
 .time {
   font-size: 72px;
   font-weight: 500;
   text-decoration: none;
+}
+
+/* Button */
+.btn {
+  width: 100px;
+  color: white;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: rgb(2, 117, 216);
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  color: white;
+  background-color: rgb(12, 127, 246);
+  transition: 0.3s;
+}
+
+.btn-success {
+  background-color: rgb(92, 184, 92);
+}
+
+.btn-success:hover {
+  background-color: rgb(102, 204, 102);
+}
+
+.btn-danger {
+  background-color: rgb(217, 83, 79);
+}
+
+.btn-danger:hover {
+  background-color: rgb(247, 93, 89);
+}
+
+/* Input Field */
+.input-group {
+  position: relative;
+  padding: 2em 10em;
+}
+
+.input-group label {
+  position: relative;
+  top: -48px;
+  left: 0px;
+  font-size: 36px;
+  color: #000;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-group input {
+  border: 0;
+  border-bottom: 2px solid #777;  
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 5px 0;
+  font-size: 36px;
+  color: #777;
+} 
+
+.input-group input:hover {
+  border-bottom: 3px solid #000000;
+}
+
+.input-group input:focus { 
+  border: none;	
+  outline: none;
+  border-bottom: 3px solid rgb(12, 127, 246);	
+  color: #000000;
+  font-weight: 600;
+ }
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+	top: -75px;
+	font-size: 24px;
+  color: #777;
 }
