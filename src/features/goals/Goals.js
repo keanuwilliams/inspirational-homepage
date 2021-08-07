@@ -16,10 +16,18 @@ export default function Goals() {
   }
 
   return (
-    <section>
-      {Object.values(goals).map((goal, index) => (
-        <Goal key={index} goal={goal} removeGoal={deleteGoal} completeGoal={finishGoal} />
-      ))}
-    </section>
+    <div className="goals">
+      <div className="col">
+        {Object.values(goals).map((goal, index) => (
+          <Goal key={index} goal={goal} removeGoal={deleteGoal} completeGoal={finishGoal} />
+        ))}
+      </div>
+      <div className="col">
+
+      </div>
+      <div className="col">
+
+      </div>
+    </div>
   );
 }

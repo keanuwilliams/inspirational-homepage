@@ -14,7 +14,7 @@ export const goalsSlice = createSlice({
     },
     completeGoal: (state, action) => {
       const goal = state.goals.find((goal) => goal.id === action.payload.id);
-      goal.complete = true;
+      goal.complete = !goal.complete;
     }
   }
 });

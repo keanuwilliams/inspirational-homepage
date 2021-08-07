@@ -1,13 +1,21 @@
 import React from 'react';
 import Button from '../../components/Button';
+import '../../App.css';
 
 export default function Goal({ goal, removeGoal, completeGoal }) {
 
   return (
-    <>
-      {goal.complete ? <p style={{ textDecoration: "line-through" }}>{goal.name}</p> : <p>{goal.name}</p>}
-      {!goal.complete && <Button success contents="Done" onClick={(e) => completeGoal(goal)} />}
-      <Button danger contents="Remove" onClick={(e) => removeGoal(goal)} />
-    </>
+    <div className={goal.complete ? "goal goal-complete" : "goal"}>
+      <div id="goal-text">
+        {goal.complete ? <p style={{ textDecoration: "line-through" }}>{goal.name}</p> : <p>{goal.name}</p>}  
+      </div>
+      <div id="goal-btn-group">
+        {
+          !goal.complete ? <Button success contents="Done" onClick={(e) => completeGoal(goal)} /> : 
+          <Button secondary contents="Undo" onClick={(e) => completeGoal(goal)} />
+        }
+        <Button danger contents="Remove" onClick={(e) => removeGoal(goal)} />
+      </div>
+    </div>
   );
 }
