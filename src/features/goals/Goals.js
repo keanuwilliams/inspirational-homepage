@@ -17,17 +17,9 @@ export default function Goals() {
 
   return (
     <section className="goals">
-      <div className="col">
-        {Object.values(goals).map((goal, index) => (
+      {Object.values(goals).map((goal, index) => (
           <Goal key={index} goal={goal} removeGoal={deleteGoal} completeGoal={finishGoal} />
-        ))}
-      </div>
-      <div className="col">
-
-      </div>
-      <div className="col">
-
-      </div>
+      ))}
     </section>
   );
 }
