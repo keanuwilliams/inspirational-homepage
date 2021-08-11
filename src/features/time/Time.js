@@ -5,7 +5,7 @@ import {
   selectTime
 } from './timeSlice';
 
-export const Time = () => {
+export default function Time({ bold }) {
   const time = useSelector(selectTime);
   const dispatch = useDispatch();
 
@@ -15,5 +15,9 @@ export const Time = () => {
     }, 1000);
   }, [dispatch]);
 
-  return <span>{time}</span>;
+    return (
+      <>
+        {bold ? <b>{time}</b> : time}
+      </>
+    );
 }

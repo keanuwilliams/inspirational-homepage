@@ -15,12 +15,15 @@ const getTimeString = (militaryTime) => {
       hours -= 12;
       AMPM = "PM"
     } else {
+      if (hours === 0) {
+        hours += 12;
+      }
       AMPM = "AM"
     }
   }
   // Add a leading zero if hours and minutes are one digit
   hours = hours < 10 ? `0${hours}` : `${hours}`;
-  minutes = minutes < 10 ? `0{minutes}` : `${minutes}`;
+  minutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
   timeString = `${hours}:${minutes}`;
   if (!militaryTime) {
     timeString += AMPM;
