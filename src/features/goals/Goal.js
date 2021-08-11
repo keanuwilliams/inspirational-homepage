@@ -9,7 +9,7 @@ export default function Goal({ goal, removeGoal, completeGoal }) {
       <div id="goal-text">
         {goal.complete ? <p style={{ textDecoration: "line-through" }}>{goal.name}</p> : <p>{goal.name}</p>}  
       </div>
-      <div id="goal-btn-group">
+      <div className="goal-btn-group">
         {
           !goal.complete ? <Button success contents="Done" onClick={(e) => completeGoal(goal)} /> : 
           <Button secondary contents="Undo" onClick={(e) => completeGoal(goal)} />

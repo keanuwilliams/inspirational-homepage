@@ -97,7 +97,6 @@
 }
 
 /* Goals */
-
 .goals {
   width: 90%;
   left: 10%;
@@ -123,6 +122,10 @@
 
 .goal-complete {
   background-color: rgb(0, 0, 0, 0.3);
+}
+
+.goal-btn-group {
+  margin-top: -0.25em;
 }
 
 @media screen and (max-width: 1200px) {
