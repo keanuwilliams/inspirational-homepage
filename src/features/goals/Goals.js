@@ -16,7 +16,7 @@ export default function Goals() {
   }
 
   return (
-    <div className="goals">
+    <section className="goals">
       <div className="col">
         {Object.values(goals).map((goal, index) => (
           <Goal key={index} goal={goal} removeGoal={deleteGoal} completeGoal={finishGoal} />
@@ -28,6 +28,6 @@ export default function Goals() {
       <div className="col">
 
       </div>
-    </div>
+    </section>
   );
 }

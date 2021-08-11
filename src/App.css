@@ -48,7 +48,7 @@
 /* Input Field */
 .input-group {
   position: relative;
-  width: 80%;
+  width: 80vw;
   left: 7%;
   margin: 2em 0;
 }
@@ -97,29 +97,44 @@
 }
 
 /* Goals */
-.goals, .goal {
-  position: relative;
-  align-items: center;
-  text-align: center;
-}
 
 .goals {
-  /* background-color: rgb(0, 0, 0, 0.3); */
+  width: 90%;
+  left: 10%;
+  position: absolute;
 }
 
 /* Goal */
 .goal {
+  position: relative;
+  text-align: center;
   width: 300px;
   overflow-wrap: break-word;
+  overflow-y: auto;
   background-color: rgb(0, 0, 0, 0.1);
   border-radius: 25px;
   border: 1px solid #000000;
   padding: 0.2em;
-  margin: 1em;
+  margin: 0 0.75em 0.75em 0.75em;
   font-size: 30px;
   font-weight: 500;
+  display: inline-block;
 }
 
 .goal-complete {
   background-color: rgb(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 1200px) {
+  .goals {
+    columns: 2 auto;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .goals {
+    columns: 1 auto;
+    left: 10%;
+  }
 }
