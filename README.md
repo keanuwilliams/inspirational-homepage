@@ -29,11 +29,19 @@ TODO: Write installation process
 
 ## History
 
-### Mockups
-Created using [Figma](https://www.figma.com/) on August 02, 2021
-![First Mockup Image](public/mockups/mockup_01_20210802.png)
-![Second Mockup Image](public/mockups/mockup_02_20210802.png)
-![Third Mockup Image](public/mockups/mockup_03_20210802.png)
+### Mockups (Created using [Figma](https://www.figma.com/))
+August 02, 2021
+
+![First Mockup Image](public/history/mockups_20210802/mockup_01_20210802.png)
+![Second Mockup Image](public/history/mockups_20210802/mockup_02_20210802.png)
+![Third Mockup Image](public/history/mockups_20210802/mockup_03_20210802.png)
+
+### Goals
+August 11, 2021
+
+![No Goals Present](public/history/goals_20210811/goals_01_20210811.png)
+![Inputting a Goal](public/history/goals_20210811/goals_02_20210811.png)
+![Five Goals Present](public/history/goals_20210811/goals_03_20210811.png)
 
 ## Future Work
 
