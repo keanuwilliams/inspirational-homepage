@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../components/Button';
-import '../../App.css';
+import './Goals.css';
 
 export default function Goal({ goal, removeGoal, completeGoal }) {
 

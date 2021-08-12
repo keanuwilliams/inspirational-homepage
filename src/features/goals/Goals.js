@@ -2,6 +2,7 @@ import React from 'react';
 import { selectGoals, removeGoal, completeGoal } from "./goalsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Goal from './Goal';
+import './Goals.css';
 
 export default function Goals() {
   const goals = useSelector(selectGoals);
