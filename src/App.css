@@ -99,7 +99,8 @@
 /* Goals */
 .goals {
   width: 90%;
-  left: 10%;
+  left: 5%;
+  right: 5%;
   position: absolute;
 }
 
@@ -126,18 +127,4 @@
 
 .goal-btn-group {
   margin-top: -0.25em;
-}
-
-@media screen and (max-width: 1200px) {
-  .goals {
-    columns: 2 auto;
-    left: 5%;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .goals {
-    columns: 1 auto;
-    left: 10%;
-  }
 }
