@@ -6,6 +6,7 @@ import {
   fetchQuotes,
   selectStatus
 } from './quoteSlice';
+import './Quote.css';
 
 export default function Quote() {
   const quote = useSelector(selectQuote);
@@ -18,11 +19,11 @@ export default function Quote() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='quote-group'>
       {status === 'loading' ? <p>Loading...</p> : (
         <>
-          <p>{quote}</p>
-          <p>- {author}</p>
+          <p>"{quote}"</p>
+          <p><b>{author}</b></p>
         </>
       )}
     </div>
