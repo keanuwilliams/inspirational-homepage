@@ -4,6 +4,7 @@ import {
   updateTime,
   selectTime
 } from './timeSlice';
+import './Time.css';
 
 export default function Time({ bold }) {
   const time = useSelector(selectTime);
@@ -16,8 +17,8 @@ export default function Time({ bold }) {
   }, [dispatch]);
 
     return (
-      <>
+      <div className="time">
         {bold ? <b>{time}</b> : time}
-      </>
+      </div>
     );
 }

@@ -45,4 +45,7 @@ August 11, 2021
 
 ## Future Work
 
-TODO: Add future features to be added
+These are the features that are planned to be implemented after the main features.
+
+- Date to be displayed above time
+- Saving goal data locally so that when page refreshes, past goals are displayed.

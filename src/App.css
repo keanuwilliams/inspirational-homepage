@@ -38,19 +38,12 @@
   }
 }
 
-/* Time */
-.time {
-  font-size: 72px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
 /* Input Field */
 .input-group {
   position: relative;
   width: 80vw;
-  left: 7%;
   margin: 2em 0;
+  left: 7%;
 }
 
 .input-group label {
@@ -96,35 +89,33 @@
   color: #777777;
 }
 
-/* Goals */
-.goals {
-  width: 90%;
-  left: 5%;
-  right: 5%;
-  position: absolute;
-}
-
-/* Goal */
-.goal {
-  position: relative;
-  text-align: center;
-  width: 300px;
-  overflow-wrap: break-word;
-  overflow-y: auto;
+.goal-container {
   background-color: rgb(0, 0, 0, 0.1);
+  border: 3px solid #000;
   border-radius: 25px;
-  border: 1px solid #000000;
-  padding: 0.2em;
-  margin: 0 0.75em 0.75em 0.75em;
-  font-size: 30px;
-  font-weight: 500;
-  display: inline-block;
+  padding: 1em;
+  margin: 0.5em auto;
 }
 
-.goal-complete {
-  background-color: rgb(0, 0, 0, 0.3);
-}
+@media only screen and (max-width: 768px) {
+  .App {
+    margin: 2em auto;
+  }
 
-.goal-btn-group {
-  margin-top: -0.25em;
+  .input-group {
+    text-align: center;
+  }
+
+  .input-group label {
+    font-size: 28px;
+  }
+
+  .input-group input {
+    font-size: 28px;
+  } 
+
+  .input-group input:focus ~ label,
+  .input-group input:valid ~ label {
+    font-size: 18px;
+  }
 }
