@@ -18,6 +18,13 @@ export default function Quote() {
     dispatch(fetchQuotes());
   }, [dispatch]);
 
+  // return empty div if fetching a quote from API has failed
+  if (status === 'failed') {
+    return (
+      <div></div>
+    );
+  }
+
   return (
     <div className='quote-group'>
       {status === 'loading' ? <p>Loading...</p> : (

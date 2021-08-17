@@ -6,7 +6,7 @@ export const fetchQuotes = createAsyncThunk(
     const quotes = fetch('https://type.fit/api/quotes')
       .then((response) => {
         return response.json();
-      });
+    });
     return quotes;
   }
 );
@@ -44,6 +44,9 @@ export const quoteSlice = createSlice({
       if (state.author === null) {
         state.author = "Anonymous";
       }
+    },
+    [fetchQuotes.rejected]: (state) => {
+      state.status = 'failed';
     }
   }
 });
