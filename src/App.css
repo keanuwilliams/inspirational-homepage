@@ -1,5 +1,6 @@
 .App {
   margin: 1em 2em;
+  padding: 1em;
 }
 
 .info-container {
@@ -10,8 +11,8 @@
   background-color: rgb(0, 0, 0, 0.1);
   border: 3px solid #000;
   border-radius: 25px;
-  padding: 1em;
   margin: 0.5em auto;
+  padding-top: 1em;
 }
 
 /* Input Field */
