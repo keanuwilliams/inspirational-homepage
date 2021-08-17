@@ -9,13 +9,10 @@
   border: 3px solid #000;
   background-color: rgb(2, 117, 216, 0.3);
   max-width: 1080px;
-  left: 15px;
 }
 
 @media only screen and (max-width: 480px) {
   .quote-group {
-    left: 0px;
     font-size: 16px;
-    left: 10px;
   }
 }
