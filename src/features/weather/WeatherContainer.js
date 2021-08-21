@@ -38,8 +38,7 @@ export default function WeatherContainer() {
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
-  useEffect(() => {
-    // Update weather every 15 minutes
+  const fetchWeather = () => {
     setLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -51,6 +50,14 @@ export default function WeatherContainer() {
           })
       });
     }
+  }
+
+  useEffect(() => {
+    fetchWeather();
+    // Update every 15 minutes
+    setInterval(() => {
+      fetchWeather();
+    }, 900000);
   }, []);
 
   return <Weather weather={weather} weatherIcon={weatherIcon} temp={temp} />;
