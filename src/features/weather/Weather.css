@@ -1,11 +1,20 @@
-.time {
+.weather {
+  margin-top: -10px;
+}
+
+#temp {
+  display: inline;
   font-size: 72px;
   font-weight: 500;
   text-decoration: none;
 }
 
+#weather-icon {
+  width: 60px;
+}
+
 @media only screen and (max-width: 600px) {
-  .time {
+  .weather {
     text-align: center;
   }
 }

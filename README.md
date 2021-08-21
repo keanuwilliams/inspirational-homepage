@@ -63,4 +63,5 @@ August 12, 2021
 These are the features that are planned to be implemented after the main features.
 
 - Date to be displayed above time
-- Saving goal data locally so that when page refreshes, past goals are displayed.
+- Saving goal data locally so that when page refreshes, past goals are displayed
+- Add edit feature to goal
