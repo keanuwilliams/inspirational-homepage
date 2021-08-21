@@ -2,7 +2,7 @@ import React from 'react';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
 import Quote from '../features/quote/Quote';
-import Weather from '../features/weather/Weather';
+import WeatherContainer from '../features/weather/WeatherContainer';
 import NewGoalsForm from '../components/NewGoalsForm';
 import '../App.css';
 
@@ -11,7 +11,7 @@ export default function Homepage() {
     <>
       <div className="info-container">
         <Time />
-        <Weather />
+        <WeatherContainer />
       </div>
       <div className="goal-container">
         <NewGoalsForm />
