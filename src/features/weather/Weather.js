@@ -27,14 +27,23 @@ export default function Weather() {
       tempToDisplay = `${tempToDisplay}°C`;
     }
 
-    return tempToDisplay;
+    return <p id="temp">{tempToDisplay}</p>;
+  }
+
+  const weatherIcon = (weather) => {
+    if (loading) {
+      return;
+    }
+    const iconSrc = "http://openweathermap.org/img/w/"+weather.weather[0].icon+".png";
+    return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
   useEffect(() => {
+    // Update weather every 15 minutes
     setLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}&mode=json`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
           .then((response) => response.json())
           .then((data) => {
             setWeather(data);
@@ -46,6 +55,7 @@ export default function Weather() {
 
   return (
     <div className="weather">
+      {weatherIcon(weather)}
       {temp(weather)}
     </div>
   );
