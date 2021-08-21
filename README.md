@@ -10,6 +10,7 @@ An inspirational homepage that interacts with different APIs to display the curr
     1. 08/02/2021 - [Mockups](#mockups)
     2. 08/11/2021 - [Goals](#goals)
     3. 08/12/2021 - [Quotes](#quotes)
+    4. 08/21/2021 - [Weather](#weather)
 5. [Future Work](#future-work)
 
 ## Installation
@@ -57,6 +58,11 @@ August 11, 2021
 August 12, 2021
 
 ![Quotes](public/history/quotes_20210812/quotes_01_20210812.png)
+
+### Weather
+August 21, 2021
+
+![Weather](public/history/weather_20210821/weather_01_20210821.png)
 
 ## Future Work
 
