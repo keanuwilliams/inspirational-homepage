@@ -31,7 +31,6 @@ TODO: Write installation process
 - HTML
 - CSS
 - JavaScript
-- Bootstrap
 - React
 - Redux
 - Git and GitHub
