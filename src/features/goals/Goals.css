@@ -30,7 +30,7 @@
   margin-top: -0.25em;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   .goal {
     width: 250px;
     font-size: 22px;
