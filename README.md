@@ -11,6 +11,7 @@ An inspirational homepage that interacts with different APIs to display the curr
     2. 08/11/2021 - [Goals](#goals)
     3. 08/12/2021 - [Quotes](#quotes)
     4. 08/21/2021 - [Weather](#weather)
+    5. 08/21/2021 - [Settings](#settings)
 5. [Future Work](#future-work)
 
 ## Installation
@@ -64,9 +65,15 @@ August 21, 2021
 
 ![Weather](public/history/weather_20210821/weather_01_20210821.png)
 
+### Settings
+August 21, 2021
+
+![Home Page With Settings Icon](public/history/settings_20210821/settings_01_20210821.png)
+![Settings Menu](public/history/settings_20210821/settings_02_20210821.png)
+
 ## Future Work
 
-These are the features that are planned to be implemented after the main features.
+These are the features that are planned to be implemented after the main features are finished.
 
 - Date to be displayed above time
 - Saving goal data locally so that when page refreshes, past goals are displayed
