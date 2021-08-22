@@ -47,6 +47,7 @@ export const timeSlice = createSlice({
   }
 });
 
+export const selectMilitaryTime = (state) => state.time.militaryTime;
 export const selectTime = (state) => state.time.value;
 export const { toggleTime, updateTime } = timeSlice.actions;
 export default timeSlice.reducer;
