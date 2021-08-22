@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { selectTempUnits } from './weatherSlice';
 import Weather from './Weather';
+import { useSelector } from 'react-redux';
 
 const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
 export default function WeatherContainer() {
   const [weather, setWeather] = useState();
   const [loading, setLoading] = useState(true);
-  const tempUnits = 'F';
+  const tempUnits = useSelector(selectTempUnits);
 
   const temp = (weather) => {
     if (loading) {
