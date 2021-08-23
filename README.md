@@ -12,6 +12,7 @@ An inspirational homepage that interacts with different APIs to display the curr
     3. 08/12/2021 - [Quotes](#quotes)
     4. 08/21/2021 - [Weather](#weather)
     5. 08/21/2021 - [Settings](#settings)
+    6. 08/23/2021 - [Background](#background)
 5. [Future Work](#future-work)
 
 ## Installation
@@ -70,6 +71,12 @@ August 21, 2021
 
 ![Home Page With Settings Icon](public/history/settings_20210821/settings_01_20210821.png)
 ![Settings Menu](public/history/settings_20210821/settings_02_20210821.png)
+
+### Background
+August 23, 2021
+
+![Home Page With Background](public/history/background_20210823/background_01_20210823.png)
+![Settings Menu](public/history/background_20210823/background_02_20210823.png)
 
 ## Future Work
 
