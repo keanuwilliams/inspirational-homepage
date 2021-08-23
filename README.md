@@ -1,5 +1,7 @@
 # Inspirational Homepage
 
+Can view the live site here [https://inspirationalhomepagekw.netlify.app/](https://inspirationalhomepagekw.netlify.app/)
+
 An inspirational homepage that interacts with different APIs to display the current weather, a background image, and an inspirational quote. It will also provide users with a space to write down their goals for the day.
 
 ## Table of Contents
