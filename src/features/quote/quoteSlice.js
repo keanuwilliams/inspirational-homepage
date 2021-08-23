@@ -4,12 +4,7 @@ export const fetchQuotes = createAsyncThunk(
   'quote/fetchQuotes',
   async () => {
     const quotes = fetch('https://type.fit/api/quotes')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } 
-        return;
-    });
+      .then((response) => response.json());
     return quotes;
   }
 );
