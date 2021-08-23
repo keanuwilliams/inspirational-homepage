@@ -27,8 +27,8 @@
   content: 'x';
   cursor: pointer;
   position: fixed;
-  right: calc(15% - 30px);
-  top: calc(100vh - 85vh - 33px);
+  right: calc(15% - 10px);
+  top: calc(100vh - 85vh - 12px);
   background: #ededed;
   width: 25px;
   height: 25px;
