@@ -59,10 +59,35 @@
   cursor: pointer;
 }
 
+#settings-background-index-control {
+  margin: 2em auto;
+}
+
+.units-selector, #settings-index {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.settings-index-btn, #settings-index {
+  display: inline;
+  position: relative;
+  margin: 0 0.5em;
+}
+
+.settings-subtitle {
+  margin-bottom: 1em;
+  font-weight: 600;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
 .units-selector {
   letter-spacing: 3px;
-  font-size: 24px;
-  font-weight: 400;
+}
+
+#background-creds {
+  text-decoration: none;
+  margin: 1em auto;
 }
 
 @media only screen and (max-width: 600px) {

@@ -33,12 +33,13 @@ export default function Homepage() {
             src={pictures[currentIndex].urls.regular}
             alt={pictures[currentIndex].alt_description}
           />
+          <div className='background-filter' />
           <Settings />
-          <div className="info-container">
+          <div className='info-container'>
             <Time />
             <WeatherContainer />
           </div>
-          <div className="goal-container">
+          <div className='goal-container'>
             <NewGoalsForm />
             <Goals />
           </div>

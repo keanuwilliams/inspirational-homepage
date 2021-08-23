@@ -3,16 +3,24 @@
   padding: 1em;
 }
 
-.background {
-  background-repeat: no-repeat;
-  background-position: center;
+.background, .background-filter {
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0%;
   left: 0%;
-  filter: blur(5px);
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -2;
+}
+
+.background-filter {
   z-index: -1;
+  background: rgb(0, 0, 0, 0.5);
+  filter: blur(5px);
 }
 
 .info-container {
@@ -20,7 +28,7 @@
 }
 
 .goal-container {
-  background-color: rgb(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0, 0.25);
   border: 3px solid #fff;
   border-radius: 25px;
   margin: 0.5em auto;
@@ -47,12 +55,12 @@
 
 .input-group input {
   border: 0;
-  border-bottom: 2px solid #777;  
+  border-bottom: 2px solid #ccc;  
   background: transparent;
   width: 100%;
   padding: 8px 0 5px 0;
   font-size: 36px;
-  color: #777777;
+  color: #ccc;
 } 
 
 .input-group input:hover {
@@ -66,7 +74,7 @@
 .input-group input:focus { 
   border: none;	
   outline: none;
-  border-bottom: 3px solid rgb(12, 127, 246);	
+  border-bottom: 3px solid #fff;	
   color: #fff;
   font-weight: 500;
  }
@@ -75,7 +83,7 @@
 .input-group input:valid ~ label {
 	top: -75px;
 	font-size: 24px;
-  color: #777777;
+  color: #ccc;
 }
 
 @media only screen and (max-width: 600px) {
