@@ -7,21 +7,16 @@ Able to view the live site here [https://inspirationalhomepagekw.netlify.app/](h
 An inspirational homepage that interacts with different APIs to display the current weather, a background image, and an inspirational quote. It will also provide users with a space to write down their goals for the day.
 
 ## Table of Contents
-1. [Installation](#installation)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [History](#history)
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [History](#history)
     1. 08/02/2021 - [Mockups](#mockups)
     2. 08/11/2021 - [Goals](#goals)
     3. 08/12/2021 - [Quotes](#quotes)
     4. 08/21/2021 - [Weather](#weather)
     5. 08/21/2021 - [Settings](#settings)
     6. 08/23/2021 - [Background](#background)
-5. [Future Work](#future-work)
-
-## Installation
-
-TODO: Write installation process
+4. [Future Work](#future-work)
 
 ## Features
 
