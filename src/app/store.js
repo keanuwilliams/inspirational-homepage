@@ -4,6 +4,7 @@ import goalsReducer from '../features/goals/goalsSlice';
 import quoteReducer from '../features/quote/quoteSlice';
 import weatherReducer from '../features/weather/weatherSlice';
 import backgroundReducer from '../features/background/backgroundSlice';
+import dateReducer from '../features/date/dateSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     goals: goalsReducer,
     quote: quoteReducer,
     weather: weatherReducer,
-    background: backgroundReducer
+    background: backgroundReducer,
+    date: dateReducer,
   },
 });
