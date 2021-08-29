@@ -54,7 +54,7 @@ export const dateSlice = createSlice({
     updateDate: (state) => {
       const date = new Date();
       const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
-      if (window.screen.width > window.screen.height) {
+      if (document.body.clientWidth > document.body.clientHeight) {
         const fullMonth = getFullMonth(month);
         state.value = `${fullMonth} ${day}, ${year}`;
       } else {

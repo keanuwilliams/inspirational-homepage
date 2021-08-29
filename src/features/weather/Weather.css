@@ -1,10 +1,9 @@
 .weather {
-  margin-top: -10px;
+  margin-top: -5px;
 }
 
 #temp {
   display: inline;
-  font-size: 60px;
   font-weight: 500;
   text-decoration: none;
   color: #fff;
