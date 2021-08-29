@@ -1,21 +1,12 @@
-.weather {
-  margin-top: -10px;
-}
-
-#temp {
-  display: inline;
+.date {
   font-size: 60px;
   font-weight: 500;
   text-decoration: none;
   color: #fff;
 }
 
-#weather-icon {
-  width: 50px;
-}
-
 @media only screen and (max-width: 600px) {
-  .weather {
+  .date {
     text-align: center;
   }
 }
