@@ -4,8 +4,17 @@ export const fetchPictures = createAsyncThunk(
   'background/fetchPictures',
   async () => {
     const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
-    const pictures = fetch(`https://api.unsplash.com/photos/?client_id=${API_KEY}`)
-      .then((response) => response.json());
+    let orientation = '&orientation=';
+    // fetch pictures based on screen orientation
+    if (window.screen.width > window.screen.height) {
+      orientation += 'landscape';
+    } else if (window.screen.width < window.screen.height) {
+      orientation += 'portrait';
+    } else {
+      orientation += 'squarish';
+    }
+    const pictures = fetch(`https://api.unsplash.com/topics/wallpapers/photos/?client_id=${API_KEY}${orientation}`)
+    .then((response) => response.json());
     return pictures;
   }
 );
