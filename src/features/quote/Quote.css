@@ -12,7 +12,7 @@
   color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 450px) {
   .quote-group {
     font-size: 16px;
   }
