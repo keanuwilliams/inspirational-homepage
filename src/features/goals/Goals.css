@@ -32,8 +32,34 @@
   margin-top: -0.25em;
 }
 
+#goal-edit-icon {
+  font-size: 15px;
+  float: right;
+  margin: 5px 5px 0 0;
+  position: relative;
+}
+
+#goal-edit-form {
+  padding: 1em 0;
+}
+
+#goal-edit-form input {
+  font-size: 30px;
+  font-weight: 500;
+  width: 300px;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  border: 0;
+}
+
+#goal-edit-form input:focus {
+  border: none;
+  outline: none;
+}
+
 @media only screen and (max-width: 450px) {
-  .goal {
+  .goal, #goal-edit-form input {
     width: 250px;
     font-size: 22px;
   }

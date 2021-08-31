@@ -15,10 +15,18 @@ export const goalsSlice = createSlice({
     completeGoal: (state, action) => {
       const goal = state.goals.find((goal) => goal.id === action.payload.id);
       goal.complete = !goal.complete;
+    },
+    toggleEdit: (state, action) => {
+      const goal = state.goals.find((goal) => goal.id === action.payload.id);
+      goal.edit = !goal.edit;
+    },
+    updateGoal: (state, action) => {
+      const goal = state.goals.find((goal) => goal.id === action.payload.goalId);
+      goal.name = action.payload.newName;
     }
   }
 });
 
-export const { addGoal, removeGoal, completeGoal } = goalsSlice.actions;
+export const { addGoal, removeGoal, completeGoal, toggleEdit, updateGoal } = goalsSlice.actions;
 export const selectGoals = (state) => state.goals.goals;
 export default goalsSlice.reducer;

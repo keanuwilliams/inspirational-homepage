@@ -21,6 +21,7 @@ export default function NewGoalsForm() {
         id: goalId,
         name: name,
         complete: false,
+        edit: false,
       })
     );
 
