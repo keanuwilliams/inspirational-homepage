@@ -16,9 +16,9 @@ export default function Goals() {
 
   return (
     <section className="goals">
-      {Object.values(goals).map((goal, index) => (
+      {Object.values(goals).map((goal) => (
           <Goal 
-            key={index} 
+            key={goal.id} 
             goal={goal} 
             removeGoal={(goal) => dispatch(removeGoal(goal))} 
             completeGoal={(goal) => dispatch(completeGoal(goal))}
