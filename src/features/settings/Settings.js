@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button';
 import { 
   selectMilitaryTime,
@@ -25,7 +27,7 @@ const Settings = () => {
   const currentIndex = useSelector(selectCurrentIndex);
   const dispatch = useDispatch();
 
-  const settingsIcon = <i className='fa fa-cog' id='cog'></i>;
+  const settingsIcon = <FontAwesomeIcon id="cog" icon={faCog} />;
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
