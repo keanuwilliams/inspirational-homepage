@@ -61,13 +61,18 @@
   cursor: pointer;
 }
 
-#settings-background-index-control {
+#settings-unit-control {
+  margin-bottom: -1em;
+}
+
+#settings-background-index-control, #settings-contact {
   margin: 2em auto;
 }
 
-.units-selector, #settings-index {
+.settings-unit-selector, #settings-index {
   font-weight: 400;
   font-size: 24px;
+  line-height: 25px;
 }
 
 .settings-index-btn, #settings-index {
@@ -77,23 +82,31 @@
 }
 
 .settings-subtitle {
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
   font-weight: 600;
   font-size: 28px;
   text-decoration: underline;
 }
 
-.units-selector {
+.settings-unit-selector {
   letter-spacing: 3px;
 }
 
-#background-creds {
+#settings-background-creds {
   text-decoration: none;
   margin: 1em auto;
+}
+
+#settings-app-version {
+  font-size: 12px;
 }
 
 @media only screen and (max-width: 450px) {
   #settings-btn {
     margin: 1em;
+  }
+
+  .settings-unit-selector, #settings-index {
+    font-size: 18px;
   }
 }
