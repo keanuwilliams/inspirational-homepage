@@ -28,9 +28,9 @@ export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updat
   // goal name displayed.
   const GoalName = () => {
     if (goal.complete) {
-      return <p style={{ textDecoration: "line-through" }}>{goal.name}</p>;
+      return <p id="goal-text" style={{ textDecoration: "line-through" }}>{goal.name}</p>;
     } 
-    return <p>{goal.name}</p>;
+    return <p id="goal-text">{goal.name}</p>;
   }
 
   // The Goal Buttons to be displayed. If the goal is in edit mode, two buttons will appear to handle
@@ -67,7 +67,7 @@ export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updat
           <FontAwesomeIcon icon={faPen} />
         </button>
       )}
-      <div id="goal-text">
+      <div>
         {goal.edit ? (
           <form onSubmit={handleSubmit}>
             <div id="goal-edit-form">
