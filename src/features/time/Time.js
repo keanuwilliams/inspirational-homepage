@@ -18,7 +18,7 @@ export default function Time({ bold }) {
 
     return (
       <div className="time">
-        {bold ? <b>{time}</b> : time}
+        {bold ? <strong>{time}</strong> : time}
       </div>
     );
 }

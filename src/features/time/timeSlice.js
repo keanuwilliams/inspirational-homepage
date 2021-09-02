@@ -31,15 +31,26 @@ const getTimeString = (militaryTime) => {
   return timeString;
 }
 
+const getTimePreference = () => {
+  const json = localStorage.getItem('timePreference');
+  if (json !== null) {
+    return JSON.parse(json);
+  } else {
+    return false;
+  }
+}
+
 export const timeSlice = createSlice({
   name: 'time',
   initialState: {
     value: getTimeString(false),
-    militaryTime: false
+    militaryTime: getTimePreference(),
   },
   reducers: {
     toggleTime: (state) => {
       state.militaryTime = !state.militaryTime;
+      const json = JSON.stringify(state.militaryTime);
+      localStorage.setItem('timePreference', json);
     },
     updateTime: (state) => {
       state.value = getTimeString(state.militaryTime);

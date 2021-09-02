@@ -1,11 +1,10 @@
 .time {
-  font-size: 72px;
   font-weight: 500;
   text-decoration: none;
   color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 450px) {
   .time {
     text-align: center;
   }

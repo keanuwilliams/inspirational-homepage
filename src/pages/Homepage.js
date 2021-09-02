@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
 import Quote from '../features/quote/Quote';
+import Date from '../features/date/Date';
 import WeatherContainer from '../features/weather/WeatherContainer';
 import Settings from '../features/settings/Settings';
 import NewGoalsForm from '../components/NewGoalsForm';
@@ -14,7 +15,7 @@ import {
 } from '../features/background/backgroundSlice';
 import '../App.css';
 
-export default function Homepage() {
+export default function Homepage({ currentVersion }) {
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
   const status = useSelector(selectStatus);
@@ -34,8 +35,9 @@ export default function Homepage() {
             alt={pictures[currentIndex].alt_description}
           />
           <div className='background-filter' />
-          <Settings />
+          <Settings currentVersion={currentVersion} />
           <div className='info-container'>
+            <Date />
             <Time />
             <WeatherContainer />
           </div>

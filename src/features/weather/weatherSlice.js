@@ -1,9 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getTempUnits = () => {
+  const json = localStorage.getItem('tempUnits');
+  if (json !== null) {
+    return JSON.parse(json);
+  } else {
+    return 'F';
+  }
+}
+
 export const weatherSlice = createSlice({
   name: 'weather',
   initialState: {
-    tempUnits: 'F'
+    tempUnits: getTempUnits(),
   },
   reducers: {
     toggleTempUnits: (state) => {
@@ -12,6 +21,8 @@ export const weatherSlice = createSlice({
       } else {
         state.tempUnits = 'F';
       }
+      const json = JSON.stringify(state.tempUnits);
+      localStorage.setItem('tempUnits', json);
     }
   }
 });
