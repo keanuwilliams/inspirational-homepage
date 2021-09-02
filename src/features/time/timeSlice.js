@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDefaultNormalizer } from "@testing-library/react";
 
 // Creates a time string depending on the one boolean parameter: militaryTime
 const getTimeString = (militaryTime) => {
