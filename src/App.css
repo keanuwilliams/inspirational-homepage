@@ -39,8 +39,7 @@
 .input-group {
   position: relative;
   width: 80vw;
-  margin: 2em 0;
-  left: 7%;
+  margin: 2em auto;
 }
 
 .input-group label {
