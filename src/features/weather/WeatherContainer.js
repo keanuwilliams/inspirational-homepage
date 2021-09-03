@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { selectTempUnits } from './weatherSlice';
 import Weather from './Weather';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
 export default function WeatherContainer({ weather, setWeather }) {
+  const setWeatherCallback = useCallback((data) => setWeather(data), [setWeather]);
   const [loading, setLoading] = useState(true);
   const tempUnits = useSelector(selectTempUnits);
 
@@ -39,7 +40,7 @@ export default function WeatherContainer({ weather, setWeather }) {
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
-  const fetchWeather = () => {
+  useEffect(() => {
     setLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -47,21 +48,29 @@ export default function WeatherContainer({ weather, setWeather }) {
           .then((response) => response.json())
           .then((data) => {
             if (data.cod === 200) {
-              setWeather(data);
+              setWeatherCallback(data);
             }
             setLoading(false);
           })
       });
     }
-  }
-
-  useEffect(() => {
-    fetchWeather();
     // Update every 15 minutes
     setInterval(() => {
-      fetchWeather();
+      setLoading(true);
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.cod === 200) {
+                setWeatherCallback(data);
+              }
+              setLoading(false);
+            })
+        });
+      }
     }, 900000);
-  }, []); // dependency array left blank, since fetchWeather is being updated using setInterval
+  }, [setWeatherCallback]); // dependency array left blank, since fetchWeather is being updated using setInterval
 
   return <Weather weather={weather} weatherIcon={weatherIcon} temp={temp} />;
 }
