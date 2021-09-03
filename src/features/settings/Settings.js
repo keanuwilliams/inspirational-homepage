@@ -9,17 +9,17 @@ import {
 } from '../time/timeSlice';
 import { 
   selectTempUnits,
-  toggleTempUnits
+  toggleTempUnits,
 } from '../weather/weatherSlice';
 import {
   selectCurrentIndex,
   selectPictures,
   incrementIndex,
-  decrementIndex
+  decrementIndex,
 } from '../background/backgroundSlice';
 import './Settings.css';
 
-const Settings = ({ currentVersion }) => {
+const Settings = ({ currentVersion, backgroundStatus, weatherStatus }) => {
   const [isOpen, setIsOpen] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
   const militaryTime = useSelector(selectMilitaryTime);
@@ -31,6 +31,42 @@ const Settings = ({ currentVersion }) => {
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+  }
+
+  const WeatherUnitSelector = () => {
+    if (weatherStatus === 'succeeded') {
+      return (
+        <>
+          <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
+            <p className='settings-unit-selector'>{tempUnits === 'F' ? <><strong>Fahrenheit</strong> / Celsius</> : <>Fahrenheit / <strong>Celsius</strong></>}</p>
+          </button>
+          <br />
+        </>
+      );
+    }
+    return <></>;
+  }
+
+  const BackgroundIndexControl = () => {
+    if (backgroundStatus === 'succeeded') {
+      return (
+        <>
+          <div id='settings-background-index-control'>
+            <p className='settings-subtitle'>Background</p>
+            <button className='settings-index-btn' onClick={() => dispatch(decrementIndex())}>-</button>
+            <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
+            <button className='settings-index-btn' onClick={() => dispatch(incrementIndex())}>+</button>
+            <div id='settings-background-creds'>
+              <p style={{ display: 'inline' }}>Photo by </p>
+              <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
+              <p style={{ display: 'inline' }}> on </p>
+              <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
+            </div>
+          </div>
+        </>
+      );
+    }
+    return <></>;
   }
 
   const Popup = () => {
@@ -46,26 +82,12 @@ const Settings = ({ currentVersion }) => {
           <p id='settings-title'>Settings</p>
           <div id='settings-unit-control'>
             <p className='settings-subtitle'>Units</p>
-            <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
-              <p className='settings-unit-selector'>{tempUnits === 'F' ? <><strong>Fahrenheit</strong> / Celsius</> : <>Fahrenheit / <strong>Celsius</strong></>}</p>
-            </button>
-            <br />
+              <WeatherUnitSelector />
             <button className='settings-options' onClick={() => dispatch(toggleTime())}>
               <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
             </button>
           </div>
-          <div id='settings-background-index-control'>
-            <p className='settings-subtitle'>Background</p>
-            <button className='settings-index-btn' onClick={() => dispatch(decrementIndex())}>-</button>
-            <p id='settings-index'>{currentIndex+1} / {pictures.length}</p>
-            <button className='settings-index-btn' onClick={() => dispatch(incrementIndex())}>+</button>
-            <div id='settings-background-creds'>
-              <p style={{ display: 'inline' }}>Photo by </p>
-              <a href={pictures[currentIndex].user.links.html+'?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
-              <p style={{ display: 'inline' }}> on </p>
-              <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
-            </div>
-          </div>
+          <BackgroundIndexControl />
           <div id='settings-contact'>
             <p className='settings-subtitle'>About Us</p>
             <p>

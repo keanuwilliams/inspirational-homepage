@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
-export default function WeatherContainer() {
+export default function WeatherContainer({ setWeatherStatus }) {
   const [weather, setWeather] = useState();
   const [loading, setLoading] = useState(true);
   const tempUnits = useSelector(selectTempUnits);
@@ -42,6 +42,7 @@ export default function WeatherContainer() {
 
   const fetchWeather = () => {
     setLoading(true);
+    setWeatherStatus('loading');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
@@ -49,8 +50,11 @@ export default function WeatherContainer() {
           .then((data) => {
             setWeather(data);
             setLoading(false);
+            setWeatherStatus('succeeded');
           })
       });
+    } else {
+      setWeatherStatus('rejected');
     }
   }
 
