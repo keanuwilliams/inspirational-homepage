@@ -19,7 +19,7 @@ import {
 } from '../background/backgroundSlice';
 import './Settings.css';
 
-const Settings = ({ currentVersion, backgroundStatus, weatherStatus }) => {
+const Settings = ({ currentVersion, backgroundStatus, weather }) => {
   const [isOpen, setIsOpen] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
   const militaryTime = useSelector(selectMilitaryTime);
@@ -34,7 +34,7 @@ const Settings = ({ currentVersion, backgroundStatus, weatherStatus }) => {
   }
 
   const WeatherUnitSelector = () => {
-    if (weatherStatus === 'succeeded') {
+    if (weather) {
       return (
         <>
           <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
@@ -104,7 +104,7 @@ const Settings = ({ currentVersion, backgroundStatus, weatherStatus }) => {
             <p>
               Are you having trouble? Check out the help docs&nbsp;
               <a
-                href='https://keanuwilliams.github.io/'
+                href='https://github.com/keanuwilliams/inspirational-homepage/wiki/Help'
                 target='_blank'
                 rel='noreferrer'
               >

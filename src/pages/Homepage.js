@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
@@ -18,6 +18,7 @@ import '../App.css';
 
 export default function Homepage({ currentVersion }) {
   const pictures = useSelector(selectPictures);
+  const [weather, setWeather] = useState();
   const currentIndex = useSelector(selectCurrentIndex);
   const backgroundStatus = useSelector(bStatus);
   const quoteStatus = useSelector(qStatus);
@@ -49,11 +50,11 @@ export default function Homepage({ currentVersion }) {
         <>
           <BackgroundImage />
           <div className='background-filter' />
-          <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weatherStatus={weatherStatus} />
+          <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
           <div className='info-container'>
             <Date />
             <Time />
-            <WeatherContainer setWeatherStatus={setWeatherStatus} />
+            <WeatherContainer weather={weather} setWeather={setWeather} />
           </div>
           <div className='goal-container'>
             <NewGoalsForm />
