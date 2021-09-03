@@ -12,13 +12,15 @@ An inspirational homepage that interacts with different APIs to display the curr
 
 ## Features
 
-- Users can check the current weather
-- Users are shown an inspirational image
-- Users can cycle through multiple fetched images
-- Users are shown an inspirational quote
-- Users can write down their own goals
-- Users can delete goals
-- Users can mark goals as complete
+- View the date and time
+- Check the current weather
+- View an inspirational background image
+- Cycle through multiple background images
+- Be motivated with an inspirational quote
+- Write down your goals for the day
+- Edit goals you may have made a mistake on (don't worry we all make mistakes)
+- Delete goals you do not want anymore
+- Mark goals as complete
 
 ## Technologies Used
 

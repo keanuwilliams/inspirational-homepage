@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
@@ -11,35 +11,50 @@ import {
   fetchPictures, 
   selectCurrentIndex, 
   selectPictures, 
-  selectStatus,
+  selectStatus as bStatus,
 } from '../features/background/backgroundSlice';
+import { selectStatus as qStatus } from '../features/quote/quoteSlice';
 import '../App.css';
 
 export default function Homepage({ currentVersion }) {
   const pictures = useSelector(selectPictures);
+  const [weather, setWeather] = useState();
   const currentIndex = useSelector(selectCurrentIndex);
-  const status = useSelector(selectStatus);
+  const backgroundStatus = useSelector(bStatus);
+  const quoteStatus = useSelector(qStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPictures());
   }, [dispatch]);
 
+  const BackgroundImage = () => {
+    if (backgroundStatus === 'succeeded') {
+      return (
+        <img
+          className='background'
+          src={pictures[currentIndex].urls.regular}
+          alt={pictures[currentIndex].alt_description}
+        />
+      );
+    }
+    return <></>;
+  }
+
   return (
     <>
-    {status === 'succeeded' ? (
+    {(backgroundStatus === 'loading' || backgroundStatus === 'idle')
+      && (quoteStatus === 'loading' || quoteStatus === 'idle') ? (
+        'Loading...'
+    ) : (
         <>
-          <img
-            className='background'
-            src={pictures[currentIndex].urls.regular}
-            alt={pictures[currentIndex].alt_description}
-          />
+          <BackgroundImage />
           <div className='background-filter' />
-          <Settings currentVersion={currentVersion} />
+          <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
           <div className='info-container'>
             <Date />
             <Time />
-            <WeatherContainer />
+            <WeatherContainer weather={weather} setWeather={setWeather} />
           </div>
           <div className='goal-container'>
             <NewGoalsForm />
@@ -47,7 +62,7 @@ export default function Homepage({ currentVersion }) {
           </div>
           <Quote />
         </>
-      ) : 'Loading...'}
+      )}
     </>
   );
 }
