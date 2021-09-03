@@ -67,7 +67,7 @@ const Settings = ({ currentVersion }) => {
             </div>
           </div>
           <div id='settings-contact'>
-            <p className='settings-subtitle'>Contact Us</p>
+            <p className='settings-subtitle'>About Us</p>
             <p>
               Check us out on&nbsp;
               <a 
