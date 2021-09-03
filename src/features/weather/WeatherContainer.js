@@ -36,7 +36,7 @@ export default function WeatherContainer() {
     if (loading) {
       return;
     }
-    const iconSrc = "http://openweathermap.org/img/w/"+weather.weather[0].icon+".png";
+    const iconSrc = "https://openweathermap.org/img/w/"+weather.weather[0].icon+".png";
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
