@@ -101,6 +101,17 @@ const Settings = ({ currentVersion, backgroundStatus, weatherStatus }) => {
               </a>
               &nbsp;for all our updates on future releases.
             </p>
+            <p>
+              Are you having trouble? Check out the help docs&nbsp;
+              <a
+                href='https://keanuwilliams.github.io/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                here
+              </a>
+              .
+            </p>
           </div>
           <div id='settings-app-version'>
             <p>Inspirational Homepage v{ currentVersion }</p>

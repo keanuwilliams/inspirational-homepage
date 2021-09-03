@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
@@ -21,7 +21,6 @@ export default function Homepage({ currentVersion }) {
   const currentIndex = useSelector(selectCurrentIndex);
   const backgroundStatus = useSelector(bStatus);
   const quoteStatus = useSelector(qStatus);
-  const [weatherStatus, setWeatherStatus] = useState('idle');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +43,6 @@ export default function Homepage({ currentVersion }) {
   return (
     <>
     {(backgroundStatus === 'loading' || backgroundStatus === 'idle')
-      && (weatherStatus === 'loading' || weatherStatus === 'idle')
       && (quoteStatus === 'loading' || quoteStatus === 'idle') ? (
         'Loading...'
     ) : (
