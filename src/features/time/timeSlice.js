@@ -13,12 +13,14 @@ const getTimeString = (militaryTime) => {
   if (!militaryTime) {
     if (hours > 12) {
       hours -= 12;
-      AMPM = "PM"
+      AMPM = "PM";
+    } else if (hours === 12) {
+      AMPM = "PM";
     } else {
       if (hours === 0) {
         hours += 12;
       }
-      AMPM = "AM"
+      AMPM = "AM";
     }
   }
   // Add a leading zero if hours and minutes are one digit
