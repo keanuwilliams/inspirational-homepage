@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Spinner from '../components/Spinner/Spinner';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
 import Quote from '../features/quote/Quote';
@@ -45,7 +46,7 @@ export default function Homepage({ currentVersion }) {
     <>
     {(backgroundStatus === 'loading' || backgroundStatus === 'idle')
       && (quoteStatus === 'loading' || quoteStatus === 'idle') ? (
-        'Loading...'
+        <Spinner />
     ) : (
         <>
           <BackgroundImage />
