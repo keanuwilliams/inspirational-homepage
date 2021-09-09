@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 import './Goals.css';
 
 export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updateGoal }) {
@@ -40,7 +40,7 @@ export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updat
     if (goal.edit) {
       return (
         <>
-          <Button contents="Submit" onClick={handleSubmit}/>
+          <Button contents="Save" onClick={handleSubmit}/>
           <Button secondary contents="Cancel" onClick={() => {
             setName(goal.name);
             toggleEdit(goal);

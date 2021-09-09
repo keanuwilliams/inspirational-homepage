@@ -4,9 +4,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const setInitialState = () => {
   const json = localStorage.getItem('goals');
   if (json !== null) {
+    const savedGoals = JSON.parse(json);
     return {
-      goals: JSON.parse(json),
-    }
+      goals: savedGoals,
+    };
   } else {
     return {
       goals: [],
@@ -45,10 +46,35 @@ export const goalsSlice = createSlice({
       goal.name = action.payload.newName;
       const json = JSON.stringify(state.goals);
       localStorage.setItem('goals', json);
+    },
+    removeAllGoals: (state) => {
+      let answer = window.confirm("Are you sure you want to remove all your goals?");
+      if (answer) {
+        state.goals = [];
+        const json = JSON.stringify(state.goals);
+        localStorage.setItem('goals', json);
+      }
+    },
+    comepleteAllGoals: (state) => {
+      let answer = window.confirm("Are you sure you want to mark all of your goals as complete?");
+      if (answer) {
+        state.goals.forEach((goal) => goal.complete = true);
+        const json = JSON.stringify(state.goals);
+        localStorage.setItem('goals', json);
+      }
     }
   }
 });
 
-export const { addGoal, removeGoal, completeGoal, toggleEdit, updateGoal } = goalsSlice.actions;
+export const { 
+  addGoal, 
+  removeGoal, 
+  completeGoal, 
+  toggleEdit, 
+  updateGoal,
+  removeAllGoals,
+  comepleteAllGoals
+} = goalsSlice.actions;
+
 export const selectGoals = (state) => state.goals.goals;
 export default goalsSlice.reducer;

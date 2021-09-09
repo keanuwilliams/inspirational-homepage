@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 import { 
   selectMilitaryTime,
   toggleTime,
+  selectSecondsPreference,
+  toggleSeconds,
 } from '../time/timeSlice';
 import { 
   selectTempUnits,
@@ -23,6 +25,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
   const [isOpen, setIsOpen] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
   const militaryTime = useSelector(selectMilitaryTime);
+  const secondsPreference = useSelector(selectSecondsPreference);
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
   const dispatch = useDispatch();
@@ -81,10 +84,14 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
           </span>
           <p id='settings-title'>Settings</p>
           <div id='settings-unit-control'>
-            <p className='settings-subtitle'>Units</p>
+            <p className='settings-subtitle'>Preferences</p>
               <WeatherUnitSelector />
             <button className='settings-options' onClick={() => dispatch(toggleTime())}>
               <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
+            </button>
+            <br />
+            <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
+              <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
             </button>
           </div>
           <BackgroundIndexControl />
