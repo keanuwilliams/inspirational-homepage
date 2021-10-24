@@ -3,13 +3,23 @@ import { selectTempUnits } from './weatherSlice';
 import Weather from './Weather';
 import { useSelector } from 'react-redux';
 
-const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY; // API Key for OpenWeather API
 
+/**
+ * Container used to handle the logic of the API calls to OpenWeatherAPI to return to Weather.js to be displayed.
+ * @param {object} - the weather object returned from the API call to OpenWeather API
+ * @param {function} setWeather - the function used to set the weather returned from the API call to OpenWeather API
+ * @returns 
+ */
 export default function WeatherContainer({ weather, setWeather }) {
   const setWeatherCallback = useCallback((data) => setWeather(data), [setWeather]);
   const [loading, setLoading] = useState(true);
   const tempUnits = useSelector(selectTempUnits);
 
+  /**
+   * Does the calculations to display temperature in Fahrenheit or Celsius
+   * @param {object} weather - the weather object returned from the API call to OpenWeather API
+   */
   const temp = (weather) => {
     if (loading) {
       return;
@@ -32,6 +42,10 @@ export default function WeatherContainer({ weather, setWeather }) {
     return <p id="temp">{tempToDisplay}</p>;
   }
 
+  /**
+   * Uses the weather object to determine the icon to be displayed next to the temperature.
+   * @param {object} weather - the weather returned from the API call to OpenWeather API
+   */
   const weatherIcon = (weather) => {
     if (loading || !weather) {
       return;
@@ -40,6 +54,9 @@ export default function WeatherContainer({ weather, setWeather }) {
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
+  /**
+   * API call to OpenWeather API to fetch current weather using user's coordinates.
+   */
   useEffect(() => {
     setLoading(true);
     if (navigator.geolocation) {

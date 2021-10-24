@@ -17,6 +17,10 @@ import {
 import { selectStatus as qStatus } from '../features/quote/quoteSlice';
 import '../App.css';
 
+/**
+ * The page to be displayed with all of the components.
+ * @param {string} currentVersion - the current version of the application 
+ */
 export default function Homepage({ currentVersion }) {
   const pictures = useSelector(selectPictures);
   const [weather, setWeather] = useState();

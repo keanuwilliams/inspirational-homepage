@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-/** Function to initialize goals depending if there are goals saved to local storage */
+/** 
+ * Function to initialize goals depending if there are goals saved to local storage.
+ * If no goals exist, return an empty list.
+ */
 const setInitialState = () => {
   const json = localStorage.getItem('goals');
   if (json !== null) {
@@ -15,6 +18,10 @@ const setInitialState = () => {
   }
 }
 
+/**
+ * Slice that handles the goal list and the functions that add to, remove from,  
+ * complete, and update the goals in the goal list.
+ */
 export const goalsSlice = createSlice({
   name: 'goals',
   initialState: setInitialState(),
@@ -66,6 +73,8 @@ export const goalsSlice = createSlice({
   }
 });
 
+
+// Exports
 export const { 
   addGoal, 
   removeGoal, 

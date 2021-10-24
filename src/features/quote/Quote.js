@@ -8,6 +8,9 @@ import {
 } from './quoteSlice';
 import './Quote.css';
 
+/**
+ * Displays the fetched quote onto the screen within a round rectangle. 
+ */
 export default function Quote() {
   const quote = useSelector(selectQuote);
   const author = useSelector(selectAuthor);

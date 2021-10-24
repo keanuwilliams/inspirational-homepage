@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+/**
+ * Fetches the quotes from the type.fit API
+ */
 export const fetchQuotes = createAsyncThunk(
   'quote/fetchQuotes',
   async () => {
@@ -9,6 +12,9 @@ export const fetchQuotes = createAsyncThunk(
   }
 );
 
+/**
+ * Handles fetching all of the quotes from the API and grabbing a random one to display.
+ */
 export const quoteSlice = createSlice({
   name: 'quote',
   initialState: {
@@ -49,6 +55,7 @@ export const quoteSlice = createSlice({
   }
 });
 
+// Exports
 export const selectQuote = (state) => state.quote.quote;
 export const selectAuthor = (state) => state.quote.author;
 export const selectStatus = (state) => state.quote.status;

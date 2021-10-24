@@ -15,6 +15,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
 import './Goals.css';
 
+/**
+ * Displays the goals in order by row. Includes two buttons to remove all goals or to complete all goals.
+ */
 export default function Goals() {
   const goals = useSelector(selectGoals);
   const dispatch = useDispatch();
