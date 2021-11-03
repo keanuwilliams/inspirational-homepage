@@ -50,7 +50,7 @@ export default function WeatherContainer({ weather, setWeather }) {
     if (loading || !weather) {
       return;
     }
-    const iconSrc = "https://openweathermap.org/img/w/"+weather.weather[0].icon+".png";
+    const iconSrc = "https://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png";
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
 
@@ -89,5 +89,11 @@ export default function WeatherContainer({ weather, setWeather }) {
     }, 900000);
   }, [setWeatherCallback]); // dependency array left blank, since fetchWeather is being updated using setInterval
 
-  return <Weather weather={weather} weatherIcon={weatherIcon} temp={temp} />;
+  return (
+    <>
+      {loading ? <p id='weather-loading-text'>Loading Weather...</p> : 
+      <Weather weather={weather} weatherIcon={weatherIcon} temp={temp} />
+      }
+    </>
+  );
 }
