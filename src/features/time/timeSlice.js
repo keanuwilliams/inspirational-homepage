@@ -37,6 +37,7 @@ const getTimeString = (militaryTime = false, secondsPreference = false) => {
   return timeString;
 }
 
+// Retrieves locally stored user preferences. If none exist, return default.
 const getInitialState = () => {
   const jsonMilitary = localStorage.getItem('timeMilitary');
   const jsonSeconds = localStorage.getItem('timeSeconds');
@@ -61,6 +62,9 @@ const getInitialState = () => {
   return initialState;
 }
 
+/**
+ * Handles fetching current time and formatting based upon user's preferences.
+ */
 export const timeSlice = createSlice({
   name: 'time',
   initialState: getInitialState(),
@@ -81,6 +85,7 @@ export const timeSlice = createSlice({
   }
 });
 
+// Exports
 export const selectMilitaryTime = (state) => state.time.militaryTime;
 export const selectTime = (state) => state.time.value;
 export const selectSecondsPreference = (state) => state.time.secondsPreference;

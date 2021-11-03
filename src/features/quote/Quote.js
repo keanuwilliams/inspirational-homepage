@@ -8,6 +8,9 @@ import {
 } from './quoteSlice';
 import './Quote.css';
 
+/**
+ * Displays the fetched quote onto the screen within a round rectangle. 
+ */
 export default function Quote() {
   const quote = useSelector(selectQuote);
   const author = useSelector(selectAuthor);
@@ -27,7 +30,7 @@ export default function Quote() {
 
   return (
     <div className='quote-group'>
-      {status === 'loading' ? <p>Loading...</p> : (
+      {status === 'loading' ? <p>Loading Quote...</p> : (
         <>
           <p>"{quote}"</p>
           <p><b>{author}</b></p>

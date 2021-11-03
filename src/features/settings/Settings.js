@@ -21,6 +21,12 @@ import {
 } from '../background/backgroundSlice';
 import './Settings.css';
 
+/**
+ * The settings to be displayed when user clicks on the settings icon.
+ * @param {string} currentVersion - the current version of the application
+ * @param {string} backgroundStatus - the status of the background API (pending, fulfilled, rejected)
+ * @param {string} weather - the weather response from OpenWeather API used to determine if weather options should be displayed
+ */
 const Settings = ({ currentVersion, backgroundStatus, weather }) => {
   const [isOpen, setIsOpen] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
@@ -36,6 +42,9 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
     setIsOpen(!isOpen);
   }
 
+  /**
+   * Displays what temperature unit is currently being used, and when clicked changes the temperature units
+   */
   const WeatherUnitSelector = () => {
     if (weather) {
       return (
@@ -50,6 +59,11 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
     return <></>;
   }
 
+  /**
+   * Displays the current index of background images that were fetched using Unsplash API
+   * Changes current index with + and - buttons
+   * Displays links to current background image author and Unsplash 
+   */
   const BackgroundIndexControl = () => {
     if (backgroundStatus === 'succeeded') {
       return (
@@ -72,6 +86,9 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
     return <></>;
   }
 
+  /**
+   * The Popup menu to be displayed when settings icon is clicked.
+   */
   const Popup = () => {
     return (
       <div className='popup-box'>

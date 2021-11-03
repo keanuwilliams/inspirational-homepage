@@ -1,6 +1,9 @@
 import React from "react";
 import './Spinner.css';
 
+/**
+ * A blue loading spinner that was generated using https://loading.io.
+ */
 export default function Spinner() {
 
   return (
