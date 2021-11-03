@@ -10,11 +10,21 @@
 }
 
 #weather-icon {
-  width: 50px;
+  width: 45px;
+}
+
+#weather-loading-text {
+  color: white;
+  font-size: 45px;
+  margin: auto;
 }
 
 @media only screen and (max-width: 450px) {
   .weather {
     text-align: center;
+  }
+
+  #weather-loading-text {
+    font-size: 35px;
   }
 }

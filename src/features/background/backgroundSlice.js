@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Grabs the locally stored background index from where the user has left off.
+ * If nothing is found, return the first index.
+ * @returns {int} the last saved index of the user; otherwise, return first index if not found
+ */
 const getCurrentIndex = () => {
   const json = localStorage.getItem('currentBGIndex');
   if (json !== null) {
@@ -9,6 +14,9 @@ const getCurrentIndex = () => {
   }
 }
 
+/**
+ * Fetches 10 images using [Unsplash](https://unsplash.com) API
+ */
 export const fetchPictures = createAsyncThunk(
   'background/fetchPictures',
   async () => {
@@ -28,6 +36,10 @@ export const fetchPictures = createAsyncThunk(
   }
 );
 
+/**
+ * The almighty Background Slice handling all of the storing and fetching of picture URLS and incrementing
+ * and decrementing of the indices.
+ */
 export const backgroundSlice = createSlice({
   name: 'background',
   initialState: {
@@ -65,6 +77,7 @@ export const backgroundSlice = createSlice({
   }
 });
 
+// Exports
 export const selectCurrentIndex = (state) => state.background.currentIndex;
 export const selectPictures = (state) => state.background.pictures;
 export const selectStatus = (state) => state.background.status;

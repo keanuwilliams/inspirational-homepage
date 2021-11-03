@@ -4,6 +4,15 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
 import './Goals.css';
 
+/**
+ * A single goal to be displayed within the list of goals.
+ * @param {object} goal - an object containing an id, name, and two booleans for editing and completing
+ * @param {function} removeGoal - function that removes the goal from the list of goals
+ * @param {function} completeGoal - function that toggles the goal's complete boolean
+ * @param {function} toggleEdit - function that toggles the goal's edit boolean
+ * @param {function} updateGoal - function that updates the goal's name
+ * @returns 
+ */
 export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updateGoal }) {
   const [name, setName] = useState(goal.name);
 
@@ -23,19 +32,22 @@ export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updat
     toggleEdit(goal);
   }
 
-  // Goal Name text to be displayed. If the goal is in edit mode, a form will appear. If the goal is
-  // completed, the goal name will be displayed with a line through it. Lastly, the default is just the
-  // goal name displayed.
+  /**
+   * Goal Name text to be displayed. If the goal is in edit mode, a form will appear. If the goal is
+   * completed, the goal name will be displayed with a line through it. Lastly, the default is just the
+   * goal name displayed.
+   */
   const GoalName = () => {
     if (goal.complete) {
       return <p id="goal-text" style={{ textDecoration: "line-through" }}>{goal.name}</p>;
     } 
     return <p id="goal-text">{goal.name}</p>;
   }
-
-  // The Goal Buttons to be displayed. If the goal is in edit mode, two buttons will appear to handle
-  // the form. Otherwise, the goal will display the default buttons: Done and Remove. If the Done button
-  // is pressed, it will change to an Undo button so that you will be able to undo completing the goal.
+ /**
+  * The Goal Buttons to be displayed. If the goal is in edit mode, two buttons will appear to handle
+  * the form. Otherwise, the goal will display the default buttons: Done and Remove. If the Done button
+  * is pressed, it will change to an Undo button so that you will be able to undo completing the goal.
+  */
   const GoalBtns = () => {
     if (goal.edit) {
       return (

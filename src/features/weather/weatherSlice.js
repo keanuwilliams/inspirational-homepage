@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Retrieves locally stored user preferences. If none exist, return default.
+ */
 const getTempUnits = () => {
   const json = localStorage.getItem('tempUnits');
   if (json !== null) {
@@ -9,6 +12,9 @@ const getTempUnits = () => {
   }
 }
 
+/**
+ * Handles user's temperature unit preferences.
+ */
 export const weatherSlice = createSlice({
   name: 'weather',
   initialState: {
@@ -27,6 +33,7 @@ export const weatherSlice = createSlice({
   }
 });
 
+// Exports
 export const selectTempUnits = (state) => state.weather.tempUnits;
 export const { toggleTempUnits } = weatherSlice.actions;
 export default weatherSlice.reducer;

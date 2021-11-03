@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * 
+ * @param {int} month - month to be converted
+ * @returns the full string of the month
+ */
 const getFullMonth = (month) => {
   let fullMonth = 'Unknown';
   switch (month) {
@@ -45,6 +50,9 @@ const getFullMonth = (month) => {
   return fullMonth;
 }
 
+/**
+ * Handles fetching the current date and formatting date depending on the screen size.
+ */
 export const dateSlice = createSlice({
   name: 'date',
   initialState: {
@@ -64,6 +72,7 @@ export const dateSlice = createSlice({
   }
 });
 
+// Exports
 export const selectDate = (state) => state.date.value;
 export const { updateDate } = dateSlice.actions;
 export default dateSlice.reducer;
