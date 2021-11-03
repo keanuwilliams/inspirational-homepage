@@ -30,7 +30,7 @@ export default function Quote() {
 
   return (
     <div className='quote-group'>
-      {status === 'loading' ? <p>Loading...</p> : (
+      {status === 'loading' ? <p>Loading Quote...</p> : (
         <>
           <p>"{quote}"</p>
           <p><b>{author}</b></p>
