@@ -17,7 +17,7 @@ export default function Time({ bold }) {
   useEffect(() => {
     setInterval(() => {
       dispatch(updateTime())
-    }, 1000);
+    }, 100);
   }, [dispatch]);
 
     return (
