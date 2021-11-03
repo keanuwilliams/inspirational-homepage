@@ -8,10 +8,10 @@ import Date from '../features/date/Date';
 import WeatherContainer from '../features/weather/WeatherContainer';
 import Settings from '../features/settings/Settings';
 import NewGoalsForm from '../components/NewGoalsForm';
-import { 
-  fetchPictures, 
-  selectCurrentIndex, 
-  selectPictures, 
+import {
+  fetchPictures,
+  selectCurrentIndex,
+  selectPictures,
   selectStatus as bStatus,
 } from '../features/background/backgroundSlice';
 import { selectStatus as qStatus } from '../features/quote/quoteSlice';
@@ -48,10 +48,10 @@ export default function Homepage({ currentVersion }) {
 
   return (
     <>
-    {(backgroundStatus === 'loading' || backgroundStatus === 'idle')
-      && (quoteStatus === 'loading' || quoteStatus === 'idle') ? (
+      {(backgroundStatus === 'loading' || backgroundStatus === 'idle')
+        && (quoteStatus === 'loading' || quoteStatus === 'idle') ? (
         <Spinner />
-    ) : (
+      ) : (
         <>
           <BackgroundImage />
           <div className='background-filter' />
