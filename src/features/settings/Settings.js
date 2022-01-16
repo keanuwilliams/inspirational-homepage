@@ -16,8 +16,6 @@ import {
 import {
   selectCurrentIndex,
   selectPictures,
-  incrementIndex,
-  decrementIndex,
 } from '../background/backgroundSlice';
 import './Settings.css';
 
@@ -70,9 +68,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
         <>
           <div id='settings-background-index-control'>
             <p className='settings-subtitle'>Background</p>
-            <button className='settings-index-btn' onClick={() => dispatch(decrementIndex())}>-</button>
             <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
-            <button className='settings-index-btn' onClick={() => dispatch(incrementIndex())}>+</button>
             <div id='settings-background-creds'>
               <p style={{ display: 'inline' }}>Photo by </p>
               <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>

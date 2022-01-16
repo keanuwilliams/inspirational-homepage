@@ -77,7 +77,7 @@
   line-height: 25px;
 }
 
-.settings-index-btn, #settings-index {
+#settings-index {
   display: inline;
   position: relative;
   margin: 0 0.5em;
