@@ -63,6 +63,7 @@ export default function Homepage({ currentVersion }) {
         <>
           <BackgroundImage />
           <div className='background-filter' />
+          <Quote />
           <div id='homepage-btns'>
             {currentIndex === 0 ? 
               <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
@@ -84,7 +85,6 @@ export default function Homepage({ currentVersion }) {
             <NewGoalsForm />
             <Goals />
           </div>
-          <Quote />
         </>
       )}
     </>

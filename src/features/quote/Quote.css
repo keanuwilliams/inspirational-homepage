@@ -1,14 +1,11 @@
 .quote-group {
-  position: relative;
+  position: sticky;
   text-align: center;
   font-size: 18px;
-  width: 70vw;
-  margin: calc(100vh - 85vh - 20px) auto 2rem;
-  padding: 1rem;
-  border-radius: 25px;
-  border: 3px solid #fff;
-  background-color: rgb(0, 107, 206, 0.75);
-  max-width: 1080px;
+  width: 100%;
+  margin: -2rem auto 2rem -2rem;
+  padding: 1rem 2rem 0.75rem;
+  background-color: rgba(25, 25, 25, 0.95);
   color: #fff;
 }
 

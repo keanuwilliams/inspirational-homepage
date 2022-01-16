@@ -20,11 +20,11 @@
   width: 300px;
   overflow-wrap: break-word;
   overflow-y: auto;
-  background-color: rgba(96, 98, 99, 0.9);
+  background-color: rgba(125, 125, 125, 0.50);
   border-radius: 25px;
   border: 2px solid #fff;
   padding: 0.25rem;
-  margin: 0 0.75rem 0.75rem 0.75rem;
+  margin: 0 0.75rem 0.75rem;
   font-size: 28px;
   font-weight: 500;
   display: inline-block;
@@ -33,7 +33,7 @@
 
 .goal-complete {
   color: #ccc;
-  background-color: rgba(41, 43, 44, 0.9);
+  background-color: rgba(45, 45, 45, 0.9);
 }
 
 .goal-btn-group {
