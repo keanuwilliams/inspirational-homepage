@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
+import {
+  selectAllBtns,
+  toggleAllBtns
+} from '../goals/goalsSlice';
 import { 
   selectMilitaryTime,
   toggleTime,
@@ -32,6 +36,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
   const secondsPreference = useSelector(selectSecondsPreference);
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
+  const goalAllBtns = useSelector(selectAllBtns);
   const dispatch = useDispatch();
 
   const settingsIcon = <FontAwesomeIcon id="cog" icon={faCog} />;
@@ -105,6 +110,11 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
             <br />
             <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
               <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
+            </button>
+            <br />
+            <p className='settings-subtitle'>Goal Actions</p>
+            <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
+              <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>OFF</strong> / ON</> : <>OFF / <strong>ON</strong></>}</p>
             </button>
           </div>
           <BackgroundIndexControl />
