@@ -147,13 +147,11 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
 
   return (
     <>
-      <span id='settings-btn'>
-        <Button
-          secondary
-          onClick={togglePopup}
-          contents={settingsIcon} 
-        />
-      </span>
+      <Button
+        secondary
+        onClick={togglePopup}
+        contents={settingsIcon} 
+      />
       {isOpen && <Popup />}
     </>
   );

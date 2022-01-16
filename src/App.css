@@ -78,6 +78,17 @@
   color: #ccc;
 }
 
+/* Arrow Icons */
+.homepage-arrow-icon {
+  font-size: 25px;
+}
+
+/* Homepage Buttons */
+#homepage-btns {
+  margin-right: 1em;
+  float: right;
+}
+
 @media only screen and (max-width: 450px) {
   .App {
     margin: auto;

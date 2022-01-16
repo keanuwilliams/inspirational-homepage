@@ -11,7 +11,7 @@ import './Button.css';
  * @param {boolean} danger - will make the button red
  * @param {boolean} secondary - will make the button gray
  */
-export default function Button({ contents = "Button", onClick, success, danger, secondary }) {
+export default function Button({ contents = "Button", onClick, success, danger, secondary, disabled }) {
   // Build out CSS class name
   let btnClass = "btn"; 
 
@@ -27,6 +27,7 @@ export default function Button({ contents = "Button", onClick, success, danger, 
     <button 
       className={btnClass} 
       onClick={onClick}
+      disabled={disabled}
     >
       {contents}
     </button>
