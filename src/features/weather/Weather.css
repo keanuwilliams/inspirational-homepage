@@ -15,16 +15,16 @@
 
 #weather-loading-text {
   color: white;
-  font-size: 45px;
-  margin: auto;
+  font-size: 50px;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 450px) {
-  .weather {
+  .weather, #weather-loading-text {
     text-align: center;
   }
 
   #weather-loading-text {
-    font-size: 35px;
+    font-size: 40px;
   }
 }

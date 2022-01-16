@@ -62,17 +62,17 @@ export default function Homepage({ currentVersion }) {
         <>
           <BackgroundImage />
           <div className='background-filter' />
-          <span id='homepage-btns'>
+          <div id='homepage-btns'>
             {currentIndex === 0 ? 
               <Button secondary disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
             : <Button onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
             }
+            <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
             {currentIndex === 9 ? 
               <Button secondary disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
             : <Button onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
             }
-            <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
-          </span>
+          </div>
           <div className='info-container'>
             <Date />
             <Time />
