@@ -12,7 +12,6 @@
   margin-bottom: 10px;
   cursor: pointer;
   display: inline-block;
-  background-color: rgb(2, 117, 216);
   background-repeat: no-repeat;
   transition: 0.3s;
   border-radius: 10px;
@@ -20,7 +19,6 @@
 
 .btn:hover {
   color: white;
-  background-color: rgb(12, 127, 246);
   transition: 0.3s;
   font-weight: 800;
 }
@@ -31,6 +29,14 @@
 
 .btn-success:hover {
   background-color: rgb(102, 204, 102);
+}
+
+.btn-primary {
+  background-color: rgb(2, 117, 216);
+}
+
+.btn-primary:hover {
+  background-color: rgb(12, 127, 246);
 }
 
 .btn-secondary {

@@ -65,13 +65,13 @@ export default function Homepage({ currentVersion }) {
           <div className='background-filter' />
           <div id='homepage-btns'>
             {currentIndex === 0 ? 
-              <Button secondary disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
-            : <Button onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
+              <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
+            : <Button primary onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
             }
             <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
             {currentIndex === 9 ? 
-              <Button secondary disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
-            : <Button onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+              <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+            : <Button primary onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
             }
           </div>
           <div className='info-container'>

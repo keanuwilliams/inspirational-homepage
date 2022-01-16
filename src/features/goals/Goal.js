@@ -52,7 +52,7 @@ export default function Goal({ goal, removeGoal, completeGoal, toggleEdit, updat
     if (goal.edit) {
       return (
         <>
-          <Button contents="Save" onClick={handleSubmit}/>
+          <Button primary contents="Save" onClick={handleSubmit}/>
           <Button secondary contents="Cancel" onClick={() => {
             setName(goal.name);
             toggleEdit(goal);

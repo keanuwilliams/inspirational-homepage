@@ -11,7 +11,7 @@ import './Button.css';
  * @param {boolean} danger - will make the button red
  * @param {boolean} secondary - will make the button gray
  */
-export default function Button({ contents = "Button", onClick, success, danger, secondary, disabled }) {
+export default function Button({ contents = "Button", onClick, success, danger, primary, secondary, disabled }) {
   // Build out CSS class name
   let btnClass = "btn"; 
 
@@ -19,6 +19,8 @@ export default function Button({ contents = "Button", onClick, success, danger, 
     btnClass += " btn-success";
   } else if (danger) {
     btnClass += " btn-danger";
+  } else if (primary) {
+    btnClass += " btn-primary";
   } else if (secondary) {
     btnClass += " btn-secondary";
   }
