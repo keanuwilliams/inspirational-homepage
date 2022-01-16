@@ -21,8 +21,8 @@ export default function Time({ bold }) {
   }, [dispatch]);
 
     return (
-      <div className="time">
+      <span className="time">
         {bold ? <strong>{time}</strong> : time}
-      </div>
+      </span>
     );
 }

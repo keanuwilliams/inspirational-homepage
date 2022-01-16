@@ -1,10 +1,12 @@
 .quote-group {
-  position: sticky;
+  position: fixed;
   text-align: center;
   font-size: 18px;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  margin: -2rem auto 2rem -2rem;
-  padding: 1rem 2rem 0.75rem;
+  margin: 0 auto;
+  padding: 1rem 0 0.75rem;
   background-color: rgba(25, 25, 25, 0.95);
   color: #fff;
 }
@@ -12,5 +14,6 @@
 @media only screen and (max-width: 450px) {
   .quote-group {
     font-size: 16px;
+    padding: 1rem 0.5rem 0.75rem;
   }
 }

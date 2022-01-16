@@ -6,8 +6,9 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .background {
@@ -18,12 +19,12 @@
 
 .background-filter {
   z-index: -1;
-  background: rgb(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, 0.60);
   filter: blur(5px);
 }
 
 .info-container {
-  margin: 0 1rem;
+  margin: 0 auto;
   font-size: 50px;
 }
 
@@ -36,7 +37,7 @@
 .input-group {
   position: relative;
   width: 90vw;
-  margin: 2rem auto;
+  margin: 1rem auto;
 }
 
 .input-group label {
@@ -89,6 +90,11 @@
   float: right;
 }
 
+/* Date and Time */
+#date-time-container {
+  display: inline-block;
+}
+
 @media only screen and (max-width: 450px) {
   .App {
     margin: auto;
@@ -97,7 +103,8 @@
 
   .info-container {
     padding-top: 2rem;
-    font-size: 40px;
+    font-size: 30px;
+    text-align: center;
   }
 
   .input-group {

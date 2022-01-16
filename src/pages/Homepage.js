@@ -63,7 +63,6 @@ export default function Homepage({ currentVersion }) {
         <>
           <BackgroundImage />
           <div className='background-filter' />
-          <Quote />
           <div id='homepage-btns'>
             {currentIndex === 0 ? 
               <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
@@ -77,14 +76,16 @@ export default function Homepage({ currentVersion }) {
           </div>
           <div className='info-container'>
             <Greeting />
-            <Date />
-            <Time />
+            <div id='date-time-container'>
+              <Date />&nbsp;<Time />
+            </div>
             <WeatherContainer weather={weather} setWeather={setWeather} />
           </div>
           <div className='goal-container'>
             <NewGoalsForm />
             <Goals />
           </div>
+          <Quote />
         </>
       )}
     </>
