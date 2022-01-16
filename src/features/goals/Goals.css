@@ -7,8 +7,8 @@
 }
 
 .goal-all-btns {
-  margin: -3em 1em 1em;
-  padding: 1em;
+  margin: -3rem 1rem 1rem;
+  padding: 1rem;
   font-size: 16px;
   text-align: center;
 }
@@ -23,8 +23,8 @@
   background-color: rgba(96, 98, 99, 0.9);
   border-radius: 25px;
   border: 2px solid #fff;
-  padding: 0.25em;
-  margin: 0 0.75em 0.75em 0.75em;
+  padding: 0.25rem;
+  margin: 0 0.75rem 0.75rem 0.75rem;
   font-size: 30px;
   font-weight: 500;
   display: inline-block;

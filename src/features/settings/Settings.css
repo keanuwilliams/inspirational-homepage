@@ -56,19 +56,19 @@
 }
 
 .settings-options {
-  margin-top: -1em;
+  margin-top: -1rem;
   background: none;
   border: none;
   padding: none;
   cursor: pointer;
 }
 
-#settings-unit-control {
-  margin-bottom: -1em;
+.settings-unit-control {
+  margin-bottom: -1rem;
 }
 
 #settings-background-index-control, #settings-contact {
-  margin: 2em auto;
+  margin: 1rem auto;
 }
 
 .settings-unit-selector, #settings-index {
@@ -80,11 +80,11 @@
 #settings-index {
   display: inline;
   position: relative;
-  margin: 0 0.5em;
+  margin: 0 0.5rem;
 }
 
 .settings-subtitle {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 28px;
   text-decoration: underline;
@@ -92,11 +92,12 @@
 
 .settings-unit-selector {
   letter-spacing: 3px;
+  color: #000;
 }
 
 #settings-background-creds {
   text-decoration: none;
-  margin: 1em auto;
+  margin: 1rem auto;
 }
 
 #settings-app-version {
@@ -105,7 +106,7 @@
 
 @media only screen and (max-width: 450px) {
   #settings-btn {
-    margin: 1em;
+    margin: 1rem;
   }
 
   .settings-unit-selector, #settings-index {

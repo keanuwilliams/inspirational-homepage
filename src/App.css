@@ -1,5 +1,5 @@
 .App {
-  margin: 1em;
+  margin: 1rem;
 }
 
 .background, .background-filter {
@@ -23,20 +23,20 @@
 }
 
 .info-container {
-  margin: 0 0.5em 0.5em 0.5em;
+  margin: 0 0.5rem 0.5rem 0.5rem;
   font-size: 60px;
 }
 
 .goal-container {
   margin: 0.5em auto;
-  padding-top: 1em;
+  padding-top: 1rem;
 }
 
 /* Input Field */
 .input-group {
   position: relative;
   width: 90vw;
-  margin: 2em auto;
+  margin: 2rem auto;
 }
 
 .input-group label {
@@ -85,7 +85,7 @@
 
 /* Homepage Buttons */
 #homepage-btns {
-  margin-right: 1em;
+  margin-right: 1rem;
   float: right;
 }
 
@@ -95,7 +95,7 @@
   }
 
   .info-container {
-    padding-top: 2em;
+    padding-top: 2rem;
     font-size: 40px;
   }
 

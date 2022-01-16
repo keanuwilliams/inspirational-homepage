@@ -101,7 +101,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
             x
           </span>
           <p id='settings-title'>Settings</p>
-          <div id='settings-unit-control'>
+          <div className='settings-unit-control'>
             <p className='settings-subtitle'>Preferences</p>
               <WeatherUnitSelector />
             <button className='settings-options' onClick={() => dispatch(toggleTime())}>
@@ -111,10 +111,11 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
             <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
               <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
             </button>
-            <br />
+          </div>
+          <div className='settings-unit-control'>
             <p className='settings-subtitle'>Goal Actions</p>
             <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
-              <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>OFF</strong> / ON</> : <>OFF / <strong>ON</strong></>}</p>
+              <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
             </button>
           </div>
           <BackgroundIndexControl />
