@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button/Button';
 import Spinner from '../components/Spinner/Spinner';
+import Greeting from '../features/greeting/Greeting';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
 import Quote from '../features/quote/Quote';
@@ -74,6 +75,7 @@ export default function Homepage({ currentVersion }) {
             }
           </div>
           <div className='info-container'>
+            <Greeting />
             <Date />
             <Time />
             <WeatherContainer weather={weather} setWeather={setWeather} />

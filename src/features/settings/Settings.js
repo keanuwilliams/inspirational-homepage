@@ -120,7 +120,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
           </div>
           <BackgroundIndexControl />
           <div id='settings-contact'>
-            <p className='settings-subtitle'>About Us</p>
             <p>
               Check us out on&nbsp;
               <a 

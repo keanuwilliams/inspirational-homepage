@@ -67,8 +67,12 @@
   margin-bottom: -1rem;
 }
 
-#settings-background-index-control, #settings-contact {
+#settings-background-index-control {
   margin: 1rem auto;
+}
+
+#settings-contact {
+  margin: 2.5rem auto 0;
 }
 
 .settings-unit-selector, #settings-index {

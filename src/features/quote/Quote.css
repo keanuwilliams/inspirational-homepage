@@ -1,7 +1,7 @@
 .quote-group {
   position: relative;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   width: 70vw;
   margin: calc(100vh - 85vh - 20px) auto 2rem;
   padding: 1rem;
@@ -14,6 +14,6 @@
 
 @media only screen and (max-width: 450px) {
   .quote-group {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

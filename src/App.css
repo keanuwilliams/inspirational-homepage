@@ -24,7 +24,7 @@
 
 .info-container {
   margin: 0 0.5rem 0.5rem 0.5rem;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .goal-container {
@@ -43,7 +43,7 @@
   position: relative;
   top: -55px;
   left: 0px;
-  font-size: 36px;
+  font-size: 30px;
   color: #fff;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
@@ -55,7 +55,7 @@
   background: transparent;
   width: 100%;
   padding: 8px 0 5px 0;
-  font-size: 36px;
+  font-size: 30px;
   color: #ccc;
 } 
 
@@ -86,6 +86,7 @@
 /* Homepage Buttons */
 #homepage-btns {
   margin-right: 1rem;
+  margin-left: 5rem;
   float: right;
 }
 
@@ -104,11 +105,11 @@
   }
 
   .input-group label {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .input-group input {
-    font-size: 26px;
+    font-size: 24px;
   } 
 
   .input-group input:focus ~ label,
