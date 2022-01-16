@@ -98,7 +98,6 @@
 @media only screen and (max-width: 450px) {
   .App {
     margin: auto;
-    padding-bottom: 8rem;
   }
 
   .info-container {

@@ -4,16 +4,22 @@
   font-size: 18px;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   padding: 1rem 0 0.75rem;
   background-color: rgba(25, 25, 25, 0.95);
   color: #fff;
 }
 
+#quote {
+  width: 90vw;
+  text-align: center;
+  margin: 1rem auto;
+}
+
 @media only screen and (max-width: 450px) {
   .quote-group {
     font-size: 16px;
-    padding: 1rem 0.5rem 0.75rem;
+    padding: 1rem 0.25rem 0.75rem;
   }
 }
