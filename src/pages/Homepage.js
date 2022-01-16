@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Button from '../components/Button/Button';
 import Spinner from '../components/Spinner/Spinner';
 import Time from '../features/time/Time';
 import Goals from '../features/goals/Goals';
@@ -12,6 +15,8 @@ import {
   fetchPictures,
   selectCurrentIndex,
   selectPictures,
+  incrementIndex,
+  decrementIndex,
   selectStatus as bStatus,
 } from '../features/background/backgroundSlice';
 import { selectStatus as qStatus } from '../features/quote/quoteSlice';
@@ -28,6 +33,8 @@ export default function Homepage({ currentVersion }) {
   const backgroundStatus = useSelector(bStatus);
   const quoteStatus = useSelector(qStatus);
   const dispatch = useDispatch();
+  const leftArrow = <FontAwesomeIcon className="homepage-arrow-icon" icon={faArrowLeft} />;
+  const rightArrow = <FontAwesomeIcon className="homepage-arrow-icon" icon={faArrowRight} />;
 
   useEffect(() => {
     dispatch(fetchPictures());
@@ -55,7 +62,17 @@ export default function Homepage({ currentVersion }) {
         <>
           <BackgroundImage />
           <div className='background-filter' />
-          <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
+          <span id='homepage-btns'>
+            {currentIndex === 0 ? 
+              <Button secondary disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
+            : <Button onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
+            }
+            {currentIndex === 9 ? 
+              <Button secondary disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+            : <Button onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+            }
+            <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} />
+          </span>
           <div className='info-container'>
             <Date />
             <Time />
