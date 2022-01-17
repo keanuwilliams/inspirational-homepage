@@ -18,6 +18,7 @@ const Weather = ({weather, weatherIcon, weatherDescription, temp}) => {
   return (
     <div className="weather">
       {weatherIcon(weather)}
+      &nbsp;
       {weatherDescription(weather)}
       &nbsp;
       {temp(weather)}

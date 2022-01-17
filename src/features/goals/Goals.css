@@ -74,7 +74,7 @@
   outline: none;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 910px) {
   .goal {
     width: 250px;
     font-size: 22px;
