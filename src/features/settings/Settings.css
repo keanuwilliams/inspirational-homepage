@@ -11,11 +11,11 @@
 .box {
   position: relative;
   text-align: center;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   height: auto;
-  max-height: 80vh;
-  margin-top: calc(100vh - 85vh - 25px);
+  max-height: 85vh;
+  margin-top: calc(100vh - 92vh - 25px);
   background: #fff;
   border-radius: 20px;
   padding: 15px 20px;
@@ -31,27 +31,23 @@
 
 .close-icon {
   content: 'x';
+  font-weight: bold;
   cursor: pointer;
   position: fixed;
-  right: calc(15%);
-  top: calc(100vh - 85vh - 12px);
+  right: calc(12%);
+  top: calc(100vh - 92vh - 10px);
   background: #ededed;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  line-height: 18px;
+  line-height: 21px;
   text-align: center;
   border: 1px solid #999;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 #cog {
   font-size: 25px;
-}
-
-#settings-btn {
-  margin-right: 1em;
-  float: right;
 }
 
 #settings-title {
@@ -60,19 +56,23 @@
 }
 
 .settings-options {
-  margin-top: -1em;
+  margin-top: -1rem;
   background: none;
   border: none;
   padding: none;
   cursor: pointer;
 }
 
-#settings-unit-control {
-  margin-bottom: -1em;
+.settings-unit-control {
+  margin-bottom: -1rem;
 }
 
-#settings-background-index-control, #settings-contact {
-  margin: 2em auto;
+#settings-background-index-control {
+  margin: 1rem auto;
+}
+
+#settings-contact {
+  margin: 2.5rem auto 0;
 }
 
 .settings-unit-selector, #settings-index {
@@ -81,14 +81,14 @@
   line-height: 25px;
 }
 
-.settings-index-btn, #settings-index {
+#settings-index {
   display: inline;
   position: relative;
-  margin: 0 0.5em;
+  margin: 1rem 0.5rem;
 }
 
 .settings-subtitle {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 28px;
   text-decoration: underline;
@@ -96,11 +96,21 @@
 
 .settings-unit-selector {
   letter-spacing: 3px;
+  color: #000;
 }
 
 #settings-background-creds {
   text-decoration: none;
-  margin: 1em auto;
+  margin: 1rem auto;
+}
+
+#settings-name-edit-btn, #settings-name-subtitle {
+  display: inline;
+  margin: 2rem 0 0.6rem 1rem;
+}
+
+#settings-name-subtitle {
+  margin-left: 2.5rem;
 }
 
 #settings-app-version {
@@ -109,7 +119,7 @@
 
 @media only screen and (max-width: 450px) {
   #settings-btn {
-    margin: 1em;
+    margin: 1rem;
   }
 
   .settings-unit-selector, #settings-index {

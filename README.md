@@ -6,9 +6,10 @@ View the live site here: [https://inspirationalhp.netlify.app/](https://inspirat
 
 An inspirational homepage that interacts with different APIs to display the current weather, a background image, and an inspirational quote. It will also provide users with a space to write down their goals for the day.
 
-## Table of Contents
-1. [Features](#features)
-2. [Technologies Used](#technologies-used)
+## Wiki Links
+1. [Welcome](https://github.com/keanuwilliams/inspirational-homepage/wiki)
+2. [Help](https://github.com/keanuwilliams/inspirational-homepage/wiki/Help)
+3. [History](https://github.com/keanuwilliams/inspirational-homepage/wiki/History)
 
 ## Features
 

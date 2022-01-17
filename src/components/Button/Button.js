@@ -9,24 +9,31 @@ import './Button.css';
  * @param {function} onClick - the event that occurs when the button is clicked
  * @param {boolean} success - will make the button green
  * @param {boolean} danger - will make the button red
+ * @param {boolean} primary - will make the bytton blue
  * @param {boolean} secondary - will make the button gray
+ * @param {boolean} disabled - will make the button disabled
  */
-export default function Button({ contents = "Button", onClick, success, danger, secondary }) {
+export default function Button({ contents = "Button", onClick, success, danger, primary, secondary, disabled }) {
   // Build out CSS class name
   let btnClass = "btn"; 
 
-  if (success) { // Logic for button color
-    btnClass += " btn-success";
-  } else if (danger) {
-    btnClass += " btn-danger";
-  } else if (secondary) {
-    btnClass += " btn-secondary";
+  if (!disabled) {
+    if (success) { // Logic for button color
+      btnClass += " btn-success";
+    } else if (danger) {
+      btnClass += " btn-danger";
+    } else if (secondary) {
+      btnClass += " btn-secondary";
+    } else { // default is primary
+      btnClass += " btn-primary";
+    }
   }
 
   return (
     <button 
       className={btnClass} 
       onClick={onClick}
+      disabled={disabled}
     >
       {contents}
     </button>
