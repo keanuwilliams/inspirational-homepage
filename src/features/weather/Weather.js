@@ -17,9 +17,9 @@ const Weather = ({weather, weatherIcon, weatherDescription, temp}) => {
 
   return (
     <div className="weather">
-      {weatherIcon(weather)}
-      &nbsp;
       {weatherDescription(weather)}
+      &nbsp;
+      {weatherIcon(weather)}
       &nbsp;
       {temp(weather)}
     </div>

@@ -110,7 +110,7 @@ export default function WeatherContainer({ weather, setWeather }) {
 
   return (
     <>
-      {loading ? <p id='weather-loading-text'>Loading Weather...</p> : 
+      {loading ? <div id='weather-loading-text'>Loading Weather...</div> : 
       <Weather weather={weather} weatherIcon={weatherIcon} weatherDescription={weatherDescription} temp={temp} />
       }
     </>

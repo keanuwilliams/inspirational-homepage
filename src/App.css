@@ -8,7 +8,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
 }
 
 .background {
@@ -19,7 +18,7 @@
 
 .background-filter {
   z-index: -1;
-  background: rgb(0, 0, 0, 0.60);
+  background: rgb(0, 0, 0, 0.6);
   filter: blur(5px);
 }
 
@@ -27,7 +26,6 @@
   margin: 0 auto;
   font-size: 45px;
   color: rgba(220, 220, 220, 0.9);
-  font-weight: 500;
   text-decoration: none;
 }
 
@@ -46,8 +44,7 @@
 .input-group label {
   position: relative;
   top: -55px;
-  left: 0px;
-  font-size: 30px;
+  left: 0;
   color: #fff;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
@@ -59,12 +56,19 @@
   background: transparent;
   width: 100%;
   padding: 8px 0 5px 0;
-  font-size: 30px;
   color: #ccc;
 } 
 
-.input-group input:hover ~ label {
+.input-group input, .input-group label {
+  font-size: 30px;
+}
+
+.input-group input:hover ~ label, .info-container, .input-group input:focus {
   font-weight: 500;
+}
+
+.input-group input:hover ~ label {
+  transition: all 0.2s;
 }
 
 .input-group input:focus { 
@@ -72,7 +76,6 @@
   outline: none;
   border-bottom: 4px solid #fff;	
   color: #fff;
-  font-weight: 500;
  }
 
 .input-group input:focus ~ label,
@@ -113,13 +116,9 @@
     text-align: center;
   }
 
-  .input-group label {
+  .input-group label, .input-group input {
     font-size: 24px;
   }
-
-  .input-group input {
-    font-size: 24px;
-  } 
 
   .input-group input:focus ~ label,
   .input-group input:valid ~ label {
