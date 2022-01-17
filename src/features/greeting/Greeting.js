@@ -4,22 +4,25 @@ import "./Greeting.css";
 /**
  * Displays a greeting depending on what the current time is.
  */
-export default function Greeting() {
+export default function Greeting({ name }) {
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
     setInterval(() => {
       const date = new Date();
       const hours = date.getHours();
+      let greeting = "";
       if (hours < 12) {
-        setGreeting("Good Morning");
+        greeting = "Good Morning";
       } else if (hours > 11 && hours < 17) {
-        setGreeting("Good Afternoon");
+        greeting = "Good Afternoon"
       } else {
-        setGreeting("Good Evening");
+        greeting = "Good Evening"
       }
+      greeting += ` ${name}`;
+      setGreeting(greeting);
     }, 100);
-  }, []);
+  }, [name]);
 
   return (
     <div id='greeting'>{greeting}</div>

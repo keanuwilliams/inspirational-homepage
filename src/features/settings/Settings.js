@@ -7,13 +7,13 @@ import {
   selectAllBtns,
   toggleAllBtns
 } from '../goals/goalsSlice';
-import { 
+import {
   selectMilitaryTime,
   toggleTime,
   selectSecondsPreference,
   toggleSeconds,
 } from '../time/timeSlice';
-import { 
+import {
   selectTempUnits,
   toggleTempUnits,
 } from '../weather/weatherSlice';
@@ -29,7 +29,7 @@ import './Settings.css';
  * @param {string} backgroundStatus - the status of the background API (pending, fulfilled, rejected)
  * @param {string} weather - the weather response from OpenWeather API used to determine if weather options should be displayed
  */
-const Settings = ({ currentVersion, backgroundStatus, weather }) => {
+const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
   const militaryTime = useSelector(selectMilitaryTime);
@@ -94,7 +94,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
     return (
       <div className='popup-box'>
         <div className='box'>
-          <span 
+          <span
             className='close-icon'
             onClick={togglePopup}
           >
@@ -103,7 +103,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
           <p id='settings-title'>Settings</p>
           <div className='settings-unit-control'>
             <p className='settings-subtitle'>Preferences</p>
-              <WeatherUnitSelector />
+            <WeatherUnitSelector />
             <button className='settings-options' onClick={() => dispatch(toggleTime())}>
               <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
             </button>
@@ -122,9 +122,9 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
           <div id='settings-contact'>
             <p>
               Check us out on&nbsp;
-              <a 
-                href='https://github.com/keanuwilliams/inspirational-homepage' 
-                target='_blank' 
+              <a
+                href='https://github.com/keanuwilliams/inspirational-homepage'
+                target='_blank'
                 rel='noreferrer'
               >
                 Github
@@ -144,7 +144,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
             </p>
           </div>
           <div id='settings-app-version'>
-            <p>Inspirational Homepage v{ currentVersion }</p>
+            <p>Inspirational Homepage v{currentVersion}</p>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather }) => {
       <Button
         secondary
         onClick={togglePopup}
-        contents={settingsIcon} 
+        contents={settingsIcon}
       />
       {isOpen && <Popup />}
     </>
