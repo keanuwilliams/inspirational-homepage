@@ -64,7 +64,8 @@ export const dateSlice = createSlice({
       const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
       if (document.body.clientWidth >= 650) {
         const fullMonth = getFullMonth(month);
-        state.value = `${fullMonth} ${day}, ${year}`;
+        const shortMonth = fullMonth.substring(0, 3);
+        state.value = `${shortMonth} ${day}, ${year}`;
       } else {
         state.value = `${month}/${day}/${year}`;
       }

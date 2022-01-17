@@ -1,19 +1,26 @@
 .quote-group {
-  position: relative;
+  position: fixed;
   text-align: center;
-  font-size: 20px;
-  width: 70vw;
-  margin: calc(100vh - 85vh - 20px) auto 2rem;
-  padding: 1em;
-  border-radius: 25px;
-  border: 3px solid #fff;
-  background-color: rgb(0, 107, 206, 0.75);
-  max-width: 1080px;
+  font-size: 18px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0 0.75rem;
+  background-color: rgba(25, 25, 25, 0.95);
   color: #fff;
 }
 
-@media only screen and (max-width: 450px) {
+#quote {
+  width: 95%;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+@media only screen and (max-width: 750px) {
   .quote-group {
     font-size: 16px;
+    margin-top: 5rem;
+    position: relative;
   }
 }

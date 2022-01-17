@@ -3,7 +3,7 @@ import Homepage from './pages/Homepage';
 import './App.css';
 
 function App() {
-  const currentVersion = '1.3.0';
+  const currentVersion = '1.4.0';
 
   return (
     <>

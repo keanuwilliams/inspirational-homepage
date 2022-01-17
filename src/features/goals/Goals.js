@@ -1,6 +1,7 @@
 import React from 'react';
 import { 
   selectGoals, 
+  selectAllBtns,
   removeGoal, 
   completeGoal,
   toggleEdit,
@@ -20,6 +21,7 @@ import './Goals.css';
  */
 export default function Goals() {
   const goals = useSelector(selectGoals);
+  const allBtns = useSelector(selectAllBtns);
   const dispatch = useDispatch();
 
   const checkmarkIcon = <FontAwesomeIcon icon={faCheck} />;
@@ -27,10 +29,12 @@ export default function Goals() {
 
   return (
     <>
-      <div className="goal-all-btns">
-        {goals.length !== 0 && <Button success contents={checkmarkIcon} onClick={() => dispatch(comepleteAllGoals())} />}
-        {goals.length !== 0 && <Button danger contents={banIcon} onClick={() => dispatch(removeAllGoals())}/>}
-      </div>
+      {allBtns && 
+        <div className="goal-all-btns">
+          {goals.length !== 0 && <Button success contents={checkmarkIcon} onClick={() => dispatch(comepleteAllGoals())} />}
+          {goals.length !== 0 && <Button danger contents={banIcon} onClick={() => dispatch(removeAllGoals())}/>}
+        </div> 
+      }
       <section className="goals">
         {Object.values(goals).map((goal) => (
             <Goal 

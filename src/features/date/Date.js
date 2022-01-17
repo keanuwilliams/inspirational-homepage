@@ -19,8 +19,8 @@ export default function Date({ bold }) {
   }, [dispatch]);
 
   return (
-    <div className='date'>
+    <span className='date'>
       {bold ? <strong>{date}</strong> : date}
-    </div>
+    </span>
   );
 }

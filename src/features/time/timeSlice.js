@@ -32,7 +32,7 @@ const getTimeString = (militaryTime = false, secondsPreference = false) => {
   // Check if user prefers the seconds added
   timeString = secondsPreference ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`;
   if (!militaryTime) {
-    timeString += AMPM;
+    timeString += ` ${AMPM}`;
   }
   return timeString;
 }

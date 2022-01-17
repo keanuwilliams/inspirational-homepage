@@ -5,17 +5,28 @@ import { createSlice } from '@reduxjs/toolkit';
  * If no goals exist, return an empty list.
  */
 const setInitialState = () => {
-  const json = localStorage.getItem('goals');
-  if (json !== null) {
-    const savedGoals = JSON.parse(json);
-    return {
-      goals: savedGoals,
-    };
+  const jsonGoals = localStorage.getItem('goals');
+  const jsonAllBtns = localStorage.getItem('allBtns');
+
+  let goals = null;
+  let allBtns = null;
+
+  if (jsonGoals !== null) {
+    goals = JSON.parse(jsonGoals);
   } else {
-    return {
-      goals: [],
-    };
+    goals = [];
   }
+
+  if (jsonAllBtns !== null) {
+    allBtns = JSON.parse(jsonAllBtns);
+  } else {
+    allBtns = true;
+  }
+
+  return {
+    goals: goals,
+    allBtns: allBtns
+  };
 }
 
 /**
@@ -54,6 +65,11 @@ export const goalsSlice = createSlice({
       const json = JSON.stringify(state.goals);
       localStorage.setItem('goals', json);
     },
+    toggleAllBtns: (state) => {
+      state.allBtns = !state.allBtns;
+      const json = JSON.stringify(state.allBtns);
+      localStorage.setItem('allBtns', json);
+    },
     removeAllGoals: (state) => {
       let answer = window.confirm("Are you sure you want to remove all your goals?");
       if (answer) {
@@ -81,9 +97,11 @@ export const {
   completeGoal, 
   toggleEdit, 
   updateGoal,
+  toggleAllBtns,
   removeAllGoals,
   comepleteAllGoals
 } = goalsSlice.actions;
 
+export const selectAllBtns = (state) => state.goals.allBtns;
 export const selectGoals = (state) => state.goals.goals;
 export default goalsSlice.reducer;

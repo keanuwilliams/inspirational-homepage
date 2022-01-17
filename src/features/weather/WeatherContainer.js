@@ -39,7 +39,7 @@ export default function WeatherContainer({ weather, setWeather }) {
       tempToDisplay = `${tempToDisplay}°C`;
     }
 
-    return <p id="temp">{tempToDisplay}</p>;
+    return <p className='weather-text'>{tempToDisplay}</p>;
   }
 
   /**
@@ -53,6 +53,25 @@ export default function WeatherContainer({ weather, setWeather }) {
     const iconSrc = "https://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png";
     return <img id="weather-icon" src={iconSrc} alt={weather.weather[0].main} />;
   }
+
+  /**
+   * Uses the weather object to determine the description to be displayed next to the temperature.
+   * @param {object} weather - the weather returned from the API call to OpenWeather API
+   */
+ const weatherDescription = (weather) => {
+  if (loading || !weather) {
+    return;
+  }
+  let wD = weather.weather[0].description;
+  let wDArray = wD.split(" ");
+  for (let i=0; i < wDArray.length; i++) {
+    let currentString = wDArray[i];
+    let newString = currentString[0].toUpperCase() + currentString.substring(1, currentString.length);
+    wDArray[i] = newString;
+  }
+  wD = wDArray.join(" ")
+  return <p className='weather-text'>{wD}</p>;
+}
 
   /**
    * API call to OpenWeather API to fetch current weather using user's coordinates.
@@ -91,8 +110,8 @@ export default function WeatherContainer({ weather, setWeather }) {
 
   return (
     <>
-      {loading ? <p id='weather-loading-text'>Loading Weather...</p> : 
-      <Weather weather={weather} weatherIcon={weatherIcon} temp={temp} />
+      {loading ? <div id='weather-loading-text'>Loading Weather...</div> : 
+      <Weather weather={weather} weatherIcon={weatherIcon} weatherDescription={weatherDescription} temp={temp} />
       }
     </>
   );

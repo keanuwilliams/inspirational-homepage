@@ -1,13 +1,13 @@
 .App {
-  margin: 1em;
+  margin: 1rem;
 }
 
 .background, .background-filter {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
 }
 
 .background {
@@ -18,32 +18,33 @@
 
 .background-filter {
   z-index: -1;
-  background: rgb(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, 0.6);
   filter: blur(5px);
 }
 
 .info-container {
-  margin: 0 0.5em 0.5em 0.5em;
-  font-size: 60px;
+  margin: 0 auto;
+  font-size: 45px;
+  color: rgba(220, 220, 220, 0.9);
+  text-decoration: none;
 }
 
 .goal-container {
   margin: 0.5em auto;
-  padding-top: 1em;
+  padding-top: 1rem;
 }
 
 /* Input Field */
 .input-group {
   position: relative;
   width: 90vw;
-  margin: 2em auto;
+  margin: 1rem auto;
 }
 
 .input-group label {
   position: relative;
   top: -55px;
-  left: 0px;
-  font-size: 36px;
+  left: 0;
   color: #fff;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
@@ -55,12 +56,19 @@
   background: transparent;
   width: 100%;
   padding: 8px 0 5px 0;
-  font-size: 36px;
   color: #ccc;
 } 
 
-.input-group input:hover ~ label {
+.input-group input, .input-group label {
+  font-size: 32px;
+}
+
+.input-group input:hover ~ label, .info-container, .input-group input:focus {
   font-weight: 500;
+}
+
+.input-group input:hover ~ label {
+  transition: all 0.2s;
 }
 
 .input-group input:focus { 
@@ -68,7 +76,6 @@
   outline: none;
   border-bottom: 4px solid #fff;	
   color: #fff;
-  font-weight: 500;
  }
 
 .input-group input:focus ~ label,
@@ -78,30 +85,49 @@
   color: #ccc;
 }
 
-@media only screen and (max-width: 450px) {
+/* Arrow Icons */
+.homepage-arrow-icon {
+  font-size: 25px;
+}
+
+/* Homepage Buttons */
+#homepage-btns {
+  margin-right: 1rem;
+  float: right;
+}
+
+/* Date and Time */
+#date-time-container {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 910px) {
   .App {
     margin: auto;
   }
 
   .info-container {
-    padding-top: 2em;
-    font-size: 50px;
+    padding-top: 2rem;
+    font-size: 30px;
+    text-align: center;
   }
 
   .input-group {
     text-align: center;
   }
 
-  .input-group label {
-    font-size: 26px;
+  .input-group label, .input-group input {
+    font-size: 24px;
   }
-
-  .input-group input {
-    font-size: 26px;
-  } 
 
   .input-group input:focus ~ label,
   .input-group input:valid ~ label {
     font-size: 18px;
+  }
+
+  #homepage-btns {
+    margin: 1rem auto -2rem;
+    float: none;
+    text-align: center;
   }
 }
