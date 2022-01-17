@@ -104,6 +104,15 @@
   margin: 1rem auto;
 }
 
+#settings-name-edit-btn, #settings-name-subtitle {
+  display: inline;
+  margin: 2rem 0 0.6rem 1rem;
+}
+
+#settings-name-subtitle {
+  margin-left: 2.5rem;
+}
+
 #settings-app-version {
   font-size: 12px;
 }

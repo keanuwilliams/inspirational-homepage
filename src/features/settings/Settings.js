@@ -31,6 +31,8 @@ import './Settings.css';
  */
 const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [editName, setEditName] = useState(name);
+  const [editNameState, setEditNameState] = useState(false);
   const tempUnits = useSelector(selectTempUnits);
   const militaryTime = useSelector(selectMilitaryTime);
   const secondsPreference = useSelector(selectSecondsPreference);
@@ -43,6 +45,9 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+    if (isOpen === false) {
+      setEditNameState(false);
+    }
   }
 
   /**
@@ -87,70 +92,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     return <></>;
   }
 
-  /**
-   * The Popup menu to be displayed when settings icon is clicked.
-   */
-  const Popup = () => {
-    return (
-      <div className='popup-box'>
-        <div className='box'>
-          <span
-            className='close-icon'
-            onClick={togglePopup}
-          >
-            x
-          </span>
-          <p id='settings-title'>Settings</p>
-          <div className='settings-unit-control'>
-            <p className='settings-subtitle'>Preferences</p>
-            <WeatherUnitSelector />
-            <button className='settings-options' onClick={() => dispatch(toggleTime())}>
-              <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
-            </button>
-            <br />
-            <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
-              <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
-            </button>
-          </div>
-          <div className='settings-unit-control'>
-            <p className='settings-subtitle'>Goal Actions</p>
-            <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
-              <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
-            </button>
-          </div>
-          <BackgroundIndexControl />
-          <div id='settings-contact'>
-            <p>
-              Check us out on&nbsp;
-              <a
-                href='https://github.com/keanuwilliams/inspirational-homepage'
-                target='_blank'
-                rel='noreferrer'
-              >
-                Github
-              </a>
-              &nbsp;for all our updates on future releases.
-            </p>
-            <p>
-              Are you having trouble? Check out the help docs&nbsp;
-              <a
-                href='https://github.com/keanuwilliams/inspirational-homepage/wiki/Help'
-                target='_blank'
-                rel='noreferrer'
-              >
-                here
-              </a>
-              .
-            </p>
-          </div>
-          <div id='settings-app-version'>
-            <p>Inspirational Homepage v{currentVersion}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <Button
@@ -158,7 +99,95 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
         onClick={togglePopup}
         contents={settingsIcon}
       />
-      {isOpen && <Popup />}
+      {isOpen &&
+        <div className='popup-box'>
+          <div className='box'>
+            <span
+              className='close-icon'
+              onClick={togglePopup}
+            >
+              x
+            </span>
+            <p id='settings-title'>Settings</p>
+            <div className='settings-unit-control'>
+              <p className='settings-subtitle'>Preferences</p>
+              <WeatherUnitSelector />
+              <button className='settings-options' onClick={() => dispatch(toggleTime())}>
+                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
+              </button>
+              <br />
+              <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
+                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
+              </button>
+            </div>
+            <div>
+              <span>
+                <p className='settings-subtitle' id='settings-name-subtitle'>Name</p>
+                <button id='settings-name-edit-btn' onClick={() => {
+                  setEditNameState(!editNameState);
+                  setEditName(name);
+                }}>
+                  {editNameState ? "cancel" : "edit"}
+                </button>
+              </span>
+              {editNameState ? (
+                <form
+                  onSubmit={() => {
+                    setName(editName);
+                    const json = JSON.stringify(editName);
+                    localStorage.setItem('name', json);
+                    setEditNameState(!editNameState);
+                  }}>
+                  <input
+                    className='settings-unit-selector'
+                    type="text"
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                  />
+                </form>
+              ) : (
+                <span>
+                  <div className='settings-unit-selector'>{name ? name : "-"}</div>
+                </span>
+              )}
+            </div>
+            <div className='settings-unit-control'>
+              <p className='settings-subtitle'>Goal Buttons</p>
+              <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
+                <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
+              </button>
+            </div>
+            <BackgroundIndexControl />
+            <div id='settings-contact'>
+              <p>
+                Check us out on&nbsp;
+                <a
+                  href='https://github.com/keanuwilliams/inspirational-homepage'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Github
+                </a>
+                &nbsp;for all our updates on future releases.
+              </p>
+              <p>
+                Are you having trouble? Check out the help docs&nbsp;
+                <a
+                  href='https://github.com/keanuwilliams/inspirational-homepage/wiki/Help'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  here
+                </a>
+                .
+              </p>
+            </div>
+            <div id='settings-app-version'>
+              <p>Inspirational Homepage v{currentVersion}</p>
+            </div>
+          </div>
+        </div>
+      }
     </>
   );
 }
