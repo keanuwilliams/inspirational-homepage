@@ -49,7 +49,11 @@ export default function Homepage({ currentVersion }) {
 
   useEffect(() => {
     const fetchedName = getName();
-    setName(fetchedName);
+    if (fetchedName.length > 10) {
+      setName("")
+    } else {
+      setName(fetchedName);
+    }
   }, []);
 
   useEffect(() => {
