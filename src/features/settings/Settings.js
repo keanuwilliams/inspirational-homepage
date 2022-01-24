@@ -50,6 +50,18 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     }
   }
 
+  const submitName = (e) => {
+    e.preventDefault();
+    if (editName.length > 10) {
+      alert("Name not updated. Name exceeds 10 characters.")
+    } else {
+      setName(editName);
+      const json = JSON.stringify(editName);
+      localStorage.setItem('name', json);
+      setEditNameState(!editNameState);
+    }
+  }
+
   /**
    * Displays what temperature unit is currently being used, and when clicked changes the temperature units
    */
@@ -131,19 +143,15 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
                 </button>
               </span>
               {editNameState ? (
-                <form
-                  onSubmit={() => {
-                    setName(editName);
-                    const json = JSON.stringify(editName);
-                    localStorage.setItem('name', json);
-                    setEditNameState(!editNameState);
-                  }}>
+                <form onSubmit={submitName}>
                   <input
                     className='settings-unit-selector'
                     type="text"
+                    maxLength={10}
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
                   />
+                  <p>Name must not exceed 10 characters.</p>
                 </form>
               ) : (
                 <span>
