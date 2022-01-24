@@ -8,10 +8,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const getCurrentIndex = () => {
   const json = localStorage.getItem('currentBGIndex');
   if (json !== null) {
-    return JSON.parse(json);
-  } else {
-    return 0;
+    const currentIndex = JSON.parse(json);
+    if (currentIndex >= 0 && currentIndex < 10) {
+      return currentIndex;
+    }
   }
+  return 0;
 }
 
 /**
