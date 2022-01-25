@@ -52,10 +52,19 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
 
   const submitName = (e) => {
     e.preventDefault();
-    if (editName.length > 10) {
-      alert("Name not updated. Name exceeds 10 characters.")
+    const valid = /^[\w\s]+$/g.test(editName);
+    if (!valid && editName !== "") {
+      alert("Name not valid. Name should only contain letters, numbers, and/or spaces.");
+    } else if (editName.length > 10) {
+      alert("Name not updated. Name exceeds 10 characters.");
     } else {
-      setName(editName);
+      if (editName === "") {
+        setName(editName);
+      } else {
+        const cleanedName = editName.match(/\w+/g);
+        setName(cleanedName.join(" "));
+        setEditName(cleanedName);
+      }
       const json = JSON.stringify(editName);
       localStorage.setItem('name', json);
       setEditNameState(!editNameState);
