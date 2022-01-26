@@ -11,6 +11,23 @@
   color: #fff;
 }
 
+#sync-icon {
+  font-size: 10px;
+  color: white;
+}
+
+#sync-btn {
+  display: inline;
+  float: right;
+  margin-right: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+#sync-btn:hover {
+  cursor: pointer;
+}
+
 #quote {
   width: 95%;
   text-align: center;
