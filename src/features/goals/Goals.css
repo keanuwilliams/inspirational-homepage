@@ -28,6 +28,7 @@
   padding: 0.15rem;
   margin: 0 0.75rem 0.75rem;
   display: inline-block;
+  min-height: 125px;
 }
 
 .goal, #goal-edit-form input {
@@ -42,7 +43,7 @@
   font-weight: 500;
   color: #fff;
   vertical-align: auto;
-  padding-bottom: 30px;
+  margin-bottom: 70px;
 }
 
 .goal-complete {
@@ -52,7 +53,7 @@
 
 .goal .goal-btn-group {
   position: absolute;
-  left: 37.5px;
+  left: 40px;
   bottom: 0;
   margin: 0 auto;
 }
@@ -69,7 +70,7 @@
 }
 
 #goal-edit-form input {
-  margin: 30px 0;
+  margin-top: 30px;
   background: transparent;
   border: 0;
 }
@@ -80,14 +81,18 @@
 }
 
 @media only screen and (max-width: 910px) {
-
   .goal, #goal-edit-form input {
     width: 250px;
+    min-width: 250px;
+    max-width: 250px;
   }
 
   #goal-text, #goal-edit-form input {
     font-size: 22px;
-    padding-bottom: 40px;
+  }
+
+  .goal .goal-btn-group {
+    left: 40px;
   }
 
   #goal-edit-icon {
