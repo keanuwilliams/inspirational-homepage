@@ -20,6 +20,8 @@ import {
 import {
   selectCurrentIndex,
   selectPictures,
+  selectBackgroundToggle,
+  toggleBackground
 } from '../background/backgroundSlice';
 import './Settings.css';
 
@@ -39,6 +41,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
   const goalAllBtns = useSelector(selectAllBtns);
+  const backgroundToggle = useSelector(selectBackgroundToggle);
   const dispatch = useDispatch();
 
   const settingsIcon = <FontAwesomeIcon id="cog" icon={faCog} />;
@@ -52,16 +55,16 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
 
   const submitName = (e) => {
     e.preventDefault();
-    const valid = /^[\w\s]+$/g.test(editName);
+    const valid = /^[\w\s-]+$/g.test(editName);
     if (!valid && editName !== "") {
-      alert("Name not valid. Name should only contain letters, numbers, and/or spaces.");
+      alert("Name not valid. Name should only contain letters, numbers, hyphens and/or spaces.");
     } else if (editName.length > 10) {
       alert("Name not updated. Name exceeds 10 characters.");
     } else {
-      if (editName === "") {
-        setName(editName);
+      if (editName === "" || /^[\s-]+$/g.test(editName)) {
+        setName("");
       } else {
-        const cleanedName = editName.match(/\w+/g);
+        const cleanedName = editName.match(/[\w-]+/g);
         setName(cleanedName.join(" "));
         setEditName(cleanedName);
       }
@@ -78,10 +81,10 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     if (weather) {
       return (
         <>
+          <p className='settings-label'>Temperature Units: </p>
           <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
             <p className='settings-unit-selector'>{tempUnits === 'F' ? <><strong>Fahrenheit</strong> / Celsius</> : <>Fahrenheit / <strong>Celsius</strong></>}</p>
           </button>
-          <br />
         </>
       );
     }
@@ -131,17 +134,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
             </span>
             <p id='settings-title'>Settings</p>
             <div className='settings-unit-control'>
-              <p className='settings-subtitle'>Preferences</p>
-              <WeatherUnitSelector />
-              <button className='settings-options' onClick={() => dispatch(toggleTime())}>
-                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
-              </button>
-              <br />
-              <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
-                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
-              </button>
-            </div>
-            <div>
               <span>
                 <p className='settings-subtitle' id='settings-name-subtitle'>Name</p>
                 <button id='settings-name-edit-btn' onClick={() => {
@@ -155,6 +147,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
                 <form onSubmit={submitName}>
                   <input
                     className='settings-unit-selector'
+                    id='settings-name-input'
                     type="text"
                     maxLength={10}
                     value={editName}
@@ -169,12 +162,27 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
               )}
             </div>
             <div className='settings-unit-control'>
-              <p className='settings-subtitle'>Goal Buttons</p>
+              <p className='settings-subtitle'>Preferences</p>
+              <WeatherUnitSelector />
+              <p className='settings-label'>Time Format:</p>
+              <button className='settings-options' onClick={() => dispatch(toggleTime())}>
+                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
+              </button>
+              <p className='settings-label'>Seconds:</p>
+              <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
+                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
+              </button>
+              <p className='settings-label'>Goal Buttons:</p>
               <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
                 <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
               </button>
+              <p className='settings-label'>Background:</p>
+              <button className='settings-options' onClick={() => dispatch(toggleBackground())}>
+                <p className='settings-unit-selector'>{!backgroundToggle ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
+              </button>
             </div>
-            <BackgroundIndexControl />
+            <br />
+            {backgroundToggle && <BackgroundIndexControl />}
             <div id='settings-contact'>
               <p>
                 Check us out on&nbsp;

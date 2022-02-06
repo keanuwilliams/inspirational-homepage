@@ -52,11 +52,12 @@
 
 #settings-title {
   font-weight: 800;
-  font-size: 32px;
+  font-size: 40px;
+  margin-bottom: 0;
 }
 
 .settings-options {
-  margin-top: -1rem;
+  margin: -2rem auto;
   background: none;
   border: none;
   padding: none;
@@ -72,13 +73,13 @@
 }
 
 #settings-contact {
-  margin: 2.5rem auto 0;
+  margin: 1.75rem auto 0;
 }
 
 .settings-unit-selector, #settings-index {
   font-weight: 400;
-  font-size: 24px;
-  line-height: 25px;
+  font-size: 22px;
+  line-height: 24px;
 }
 
 #settings-index {
@@ -94,8 +95,13 @@
   text-decoration: underline;
 }
 
+.settings-label {
+  font-size: 16px;
+}
+
 .settings-unit-selector {
   letter-spacing: 3px;
+  width: auto;
   color: #000;
 }
 
@@ -122,7 +128,19 @@
     margin: 1rem;
   }
 
+  .settings-subtitle {
+    font-size: 22px;
+  }
+
+  .settings-label {
+    font-size: 14px;
+  }
+
   .settings-unit-selector, #settings-index {
-    font-size: 18px;
+    font-size: 20px;
+  }
+
+  #settings-name-input {
+    width: 250px;
   }
 }

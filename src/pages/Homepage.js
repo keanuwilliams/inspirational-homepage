@@ -16,6 +16,7 @@ import {
   fetchPictures,
   selectCurrentIndex,
   selectPictures,
+  selectBackgroundToggle,
   incrementIndex,
   decrementIndex,
   selectStatus as bStatus,
@@ -33,6 +34,7 @@ export default function Homepage({ currentVersion }) {
   const [name, setName] = useState("");
   const currentIndex = useSelector(selectCurrentIndex);
   const backgroundStatus = useSelector(bStatus);
+  const backgroundToggle = useSelector(selectBackgroundToggle);
   const quoteStatus = useSelector(qStatus);
   const dispatch = useDispatch();
   const leftArrow = <FontAwesomeIcon className="homepage-arrow-icon" icon={faArrowLeft} />;
@@ -61,7 +63,7 @@ export default function Homepage({ currentVersion }) {
   }, [dispatch]);
 
   const BackgroundImage = () => {
-    if (backgroundStatus === 'succeeded') {
+    if (backgroundStatus === 'succeeded' && backgroundToggle) {
       return (
         <img
           className='background'
@@ -70,7 +72,19 @@ export default function Homepage({ currentVersion }) {
         />
       );
     }
-    return <></>;
+    return (
+      <div className='background' id='blank-background' />
+    );
+  }
+
+  const LeftIndexBtn = () => {
+    if (currentIndex === 0) return <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />;
+    return <Button primary onClick={() => dispatch(decrementIndex())} contents={leftArrow} />;
+  }
+
+  const RightIndexBtn = () => {
+    if (currentIndex === 9) return <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+    return <Button primary onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
   }
 
   return (
@@ -83,15 +97,9 @@ export default function Homepage({ currentVersion }) {
           <BackgroundImage />
           <div className='background-filter' />
           <div id='homepage-btns'>
-            {currentIndex === 0 ? 
-              <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
-            : <Button primary onClick={() => dispatch(decrementIndex())} contents={leftArrow} />
-            }
+            {backgroundToggle && <LeftIndexBtn />}
             <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} name={name} setName={setName} />
-            {currentIndex === 9 ? 
-              <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
-            : <Button primary onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
-            }
+            {backgroundToggle && <RightIndexBtn />}
           </div>
           <div className='info-container'>
             <Greeting name={name} />
