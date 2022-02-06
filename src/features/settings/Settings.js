@@ -63,6 +63,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     } else {
       if (editName === "" || /^[\s-]+$/g.test(editName)) {
         setName("");
+        setEditName("");
       } else {
         const cleanedName = editName.match(/[\w-]+/g);
         setName(cleanedName.join(" "));
@@ -101,14 +102,24 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
       return (
         <>
           <div id='settings-background-index-control'>
-            <p className='settings-subtitle'>Background</p>
-            <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
-            <div id='settings-background-creds'>
-              <p style={{ display: 'inline' }}>Photo by </p>
-              <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
-              <p style={{ display: 'inline' }}> on </p>
-              <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
-            </div>
+            <span>
+              <p className='settings-subtitle' id='settings-name-subtitle'>Background</p>
+              <button id='settings-name-edit-btn' onClick={() => dispatch(toggleBackground())}>
+                {backgroundToggle ? "On" : "Off"}
+              </button>
+            </span>
+            <br />
+            {backgroundToggle &&
+              <>
+                <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
+                <div id='settings-background-creds'>
+                  <p style={{ display: 'inline' }}>Photo by </p>
+                  <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
+                  <p style={{ display: 'inline' }}> on </p>
+                  <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
+                </div>
+              </>
+            }
           </div>
         </>
       );
@@ -176,13 +187,9 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
               <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
                 <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
               </button>
-              <p className='settings-label'>Background:</p>
-              <button className='settings-options' onClick={() => dispatch(toggleBackground())}>
-                <p className='settings-unit-selector'>{!backgroundToggle ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
-              </button>
             </div>
             <br />
-            {backgroundToggle && <BackgroundIndexControl />}
+            <BackgroundIndexControl />
             <div id='settings-contact'>
               <p>
                 Check us out on&nbsp;
