@@ -4,9 +4,12 @@ import {
   selectQuote,
   selectAuthor,
   fetchQuotes,
-  selectStatus
+  selectStatus,
+  generateQuote
 } from './quoteSlice';
 import './Quote.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Displays the fetched quote onto the screen within a round rectangle. 
@@ -16,6 +19,8 @@ export default function Quote() {
   const author = useSelector(selectAuthor);
   const status = useSelector(selectStatus);
   const dispatch = useDispatch();
+
+  const syncIcon = <FontAwesomeIcon id="sync-icon" icon={faSync} />;
 
   useEffect(() => {
     dispatch(fetchQuotes());
@@ -32,6 +37,7 @@ export default function Quote() {
     <div className='quote-group'>
       {status === 'loading' ? <p>Loading Quote...</p> : (
         <>
+          <button id='sync-btn' onClick={() => dispatch(generateQuote())}>{syncIcon}</button>
           <p id='quote'>"{quote}"</p>
           <p><b>{author}</b></p>
         </>

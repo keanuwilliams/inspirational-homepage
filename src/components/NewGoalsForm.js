@@ -42,7 +42,7 @@ export default function NewGoalsForm() {
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
             />
-            <label>What's your goals today?</label>
+            <label>What are your goals today?</label>
         </div>
       </form>
     </div>   

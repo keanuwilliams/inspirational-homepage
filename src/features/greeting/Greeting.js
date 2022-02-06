@@ -6,23 +6,22 @@ import "./Greeting.css";
  */
 export default function Greeting({ name }) {
   const [greeting, setGreeting] = useState("");
+  const [hours, setHours] = useState(setInterval(() => {setHours(new Date().getHours())}, 1000));
 
   useEffect(() => {
-    const date = new Date();
-    const hours = date.getHours();
     let greeting = "";
     if (hours < 12) {
       greeting = "Good Morning";
     } else if (hours > 11 && hours < 17) {
-      greeting = "Good Afternoon"
+      greeting = "Good Afternoon";
     } else {
-      greeting = "Good Evening"
+      greeting = "Good Evening";
     }
     if (name) {
       greeting += `, ${name}`;
     }
     setGreeting(greeting);
-  }, [name]);
+  }, [hours, name]);
 
   return (
     <div id='greeting'>{greeting}</div>
