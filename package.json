@@ -1,6 +1,6 @@
 {
   "name": "inspirational-homepage",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -15,7 +15,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.0",
     "uuid4": "^2.0.2"
   },
   "scripts": {

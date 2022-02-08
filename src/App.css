@@ -10,6 +10,10 @@
   left: 0;
 }
 
+#blank-background {
+  background-color: #000;
+}
+
 .background {
   background-repeat: no-repeat;
   background-position: center;

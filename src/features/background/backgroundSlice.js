@@ -6,12 +6,27 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
  * @returns {int} the last saved index of the user; otherwise, return first index if not found
  */
 const getCurrentIndex = () => {
-  const json = localStorage.getItem('currentBGIndex');
+  const json = localStorage.getItem('currentBackgroundIndex');
+  if (json !== null) {
+    const currentIndex = JSON.parse(json);
+    if (currentIndex >= 0 && currentIndex < 10) {
+      return currentIndex;
+    }
+  }
+  return 0;
+}
+
+/**
+ * Grabs the locally stored background toggle preference to determine whether
+ * or not to show the fetched background.
+ * @returns {boolean} the last saved preference of the
+ */
+const getTogglePreference = () => {
+  const json = localStorage.getItem('backgroundToggle');
   if (json !== null) {
     return JSON.parse(json);
-  } else {
-    return 0;
   }
+  return true;
 }
 
 /**
@@ -46,21 +61,27 @@ export const backgroundSlice = createSlice({
     status: 'idle',
     pictures: [],
     currentIndex: getCurrentIndex(),
+    toggle: getTogglePreference(),
   },
   reducers: {
     decrementIndex: (state) => {
       if (state.currentIndex !== 0) {
         state.currentIndex--;
         const json = JSON.stringify(state.currentIndex);
-        localStorage.setItem('currentBGIndex', json);
+        localStorage.setItem('currentBackgroundIndex', json);
       }
     },
     incrementIndex: (state) => {
       if (state.currentIndex !== state.pictures.length - 1) {
         state.currentIndex++;
         const json = JSON.stringify(state.currentIndex);
-        localStorage.setItem('currentBGIndex', json);
+        localStorage.setItem('currentBackgroundIndex', json);
       }
+    },
+    toggleBackground: (state) => {
+      state.toggle = !state.toggle;
+      const json = JSON.stringify(state.toggle);
+      localStorage.setItem('backgroundToggle', json);
     }
   },
   extraReducers: {
@@ -81,5 +102,6 @@ export const backgroundSlice = createSlice({
 export const selectCurrentIndex = (state) => state.background.currentIndex;
 export const selectPictures = (state) => state.background.pictures;
 export const selectStatus = (state) => state.background.status;
-export const { incrementIndex, decrementIndex } = backgroundSlice.actions;
+export const selectBackgroundToggle = (state) => state.background.toggle;
+export const { incrementIndex, decrementIndex, toggleBackground } = backgroundSlice.actions;
 export default backgroundSlice.reducer;

@@ -20,6 +20,8 @@ import {
 import {
   selectCurrentIndex,
   selectPictures,
+  selectBackgroundToggle,
+  toggleBackground
 } from '../background/backgroundSlice';
 import './Settings.css';
 
@@ -39,6 +41,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
   const goalAllBtns = useSelector(selectAllBtns);
+  const backgroundToggle = useSelector(selectBackgroundToggle);
   const dispatch = useDispatch();
 
   const settingsIcon = <FontAwesomeIcon id="cog" icon={faCog} />;
@@ -50,6 +53,28 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     }
   }
 
+  const submitName = (e) => {
+    e.preventDefault();
+    const valid = /^[\w\s-]+$/g.test(editName);
+    if (!valid && editName !== "") {
+      alert("Name not valid. Name should only contain letters, numbers, hyphens and/or spaces.");
+    } else if (editName.length > 10) {
+      alert("Name not updated. Name exceeds 10 characters.");
+    } else {
+      if (editName === "" || /^[\s-]+$/g.test(editName)) {
+        setName("");
+        setEditName("");
+      } else {
+        const cleanedName = editName.match(/[\w-]+/g);
+        setName(cleanedName.join(" "));
+        setEditName(cleanedName);
+      }
+      const json = JSON.stringify(editName);
+      localStorage.setItem('name', json);
+      setEditNameState(!editNameState);
+    }
+  }
+
   /**
    * Displays what temperature unit is currently being used, and when clicked changes the temperature units
    */
@@ -57,10 +82,10 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
     if (weather) {
       return (
         <>
+          <p className='settings-label'>Temperature Units: </p>
           <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
             <p className='settings-unit-selector'>{tempUnits === 'F' ? <><strong>Fahrenheit</strong> / Celsius</> : <>Fahrenheit / <strong>Celsius</strong></>}</p>
           </button>
-          <br />
         </>
       );
     }
@@ -77,14 +102,24 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
       return (
         <>
           <div id='settings-background-index-control'>
-            <p className='settings-subtitle'>Background</p>
-            <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
-            <div id='settings-background-creds'>
-              <p style={{ display: 'inline' }}>Photo by </p>
-              <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
-              <p style={{ display: 'inline' }}> on </p>
-              <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
-            </div>
+            <span>
+              <p className='settings-subtitle' id='settings-name-subtitle'>Background</p>
+              <button id='settings-name-edit-btn' onClick={() => dispatch(toggleBackground())}>
+                {backgroundToggle ? "On" : "Off"}
+              </button>
+            </span>
+            <br />
+            {backgroundToggle &&
+              <>
+                <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
+                <div id='settings-background-creds'>
+                  <p style={{ display: 'inline' }}>Photo by </p>
+                  <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
+                  <p style={{ display: 'inline' }}> on </p>
+                  <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
+                </div>
+              </>
+            }
           </div>
         </>
       );
@@ -110,17 +145,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
             </span>
             <p id='settings-title'>Settings</p>
             <div className='settings-unit-control'>
-              <p className='settings-subtitle'>Preferences</p>
-              <WeatherUnitSelector />
-              <button className='settings-options' onClick={() => dispatch(toggleTime())}>
-                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
-              </button>
-              <br />
-              <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
-                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No Seconds</strong> / Seconds</> : <>No Seconds / <strong>Seconds</strong></>}</p>
-              </button>
-            </div>
-            <div>
               <span>
                 <p className='settings-subtitle' id='settings-name-subtitle'>Name</p>
                 <button id='settings-name-edit-btn' onClick={() => {
@@ -131,19 +155,16 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
                 </button>
               </span>
               {editNameState ? (
-                <form
-                  onSubmit={() => {
-                    setName(editName);
-                    const json = JSON.stringify(editName);
-                    localStorage.setItem('name', json);
-                    setEditNameState(!editNameState);
-                  }}>
+                <form onSubmit={submitName}>
                   <input
                     className='settings-unit-selector'
+                    id='settings-name-input'
                     type="text"
+                    maxLength={10}
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
                   />
+                  <p>Name must not exceed 10 characters.</p>
                 </form>
               ) : (
                 <span>
@@ -152,11 +173,22 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
               )}
             </div>
             <div className='settings-unit-control'>
-              <p className='settings-subtitle'>Goal Buttons</p>
+              <p className='settings-subtitle'>Preferences</p>
+              <WeatherUnitSelector />
+              <p className='settings-label'>Time Format:</p>
+              <button className='settings-options' onClick={() => dispatch(toggleTime())}>
+                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
+              </button>
+              <p className='settings-label'>Seconds:</p>
+              <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
+                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
+              </button>
+              <p className='settings-label'>Goal Buttons:</p>
               <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
                 <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
               </button>
             </div>
+            <br />
             <BackgroundIndexControl />
             <div id='settings-contact'>
               <p>
