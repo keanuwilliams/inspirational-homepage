@@ -26,76 +26,33 @@
   filter: blur(5px);
 }
 
-.info-container {
+.weather-container {
   margin: 0 auto;
-  font-size: 45px;
-  color: rgba(220, 220, 220, 0.9);
+  font-size: 30px;
+  color: rgba(235, 235, 235, 0.9);
   text-decoration: none;
 }
 
-.goal-container {
-  margin: 0.5em auto;
-  padding-top: 1rem;
-}
-
-/* Input Field */
-.input-group {
-  position: relative;
-  width: 90vw;
-  margin: 1rem auto;
-}
-
-.input-group label {
-  position: relative;
-  top: -55px;
-  left: 0;
-  color: #fff;
-  pointer-events: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.input-group input {
-  border: 0;
-  border-bottom: 3px solid #ccc;  
-  background: transparent;
-  width: 100%;
-  padding: 8px 0 5px 0;
-  color: #ccc;
-} 
-
-.input-group input, .input-group label {
-  font-size: 32px;
-}
-
-.input-group input:hover ~ label, .info-container, .input-group input:focus {
-  font-weight: 500;
-}
-
-.input-group input:hover ~ label {
-  transition: all 0.2s;
-}
-
-.input-group input:focus { 
-  border: none;	
-  outline: none;
-  border-bottom: 4px solid #fff;	
-  color: #fff;
- }
-
-.input-group input:focus ~ label,
-.input-group input:valid ~ label {
-	top: -75px;
-	font-size: 24px;
-  color: #ccc;
+.info-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -70%);
+  -webkit-transform: translate(-50%, -70%);
+  width: 100vw;
+  font-size: 40px;
+  color: rgba(235, 235, 235, 0.9);
 }
 
 /* Arrow Icons */
 .homepage-arrow-icon {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 /* Homepage Buttons */
 #homepage-btns {
+  margin-top: 0.5rem;
   margin-right: 1rem;
   float: right;
 }
@@ -110,27 +67,20 @@
     margin: auto;
   }
 
+  .weather-container {
+    margin-top: 2.5rem;
+    font-size: 25px;
+  }
+
   .info-container {
-    padding-top: 2rem;
     font-size: 30px;
-    text-align: center;
-  }
-
-  .input-group {
-    text-align: center;
-  }
-
-  .input-group label, .input-group input {
-    font-size: 24px;
-  }
-
-  .input-group input:focus ~ label,
-  .input-group input:valid ~ label {
-    font-size: 18px;
   }
 
   #homepage-btns {
     margin: 1rem auto -2rem;
+  }
+
+  #homepage-btns, .weather-container {
     float: none;
     text-align: center;
   }
