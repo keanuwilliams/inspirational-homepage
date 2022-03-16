@@ -4,10 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
 import {
-  selectAllBtns,
-  toggleAllBtns
-} from '../goals/goalsSlice';
-import {
   selectMilitaryTime,
   toggleTime,
   selectSecondsPreference,
@@ -40,7 +36,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
   const secondsPreference = useSelector(selectSecondsPreference);
   const pictures = useSelector(selectPictures);
   const currentIndex = useSelector(selectCurrentIndex);
-  const goalAllBtns = useSelector(selectAllBtns);
   const backgroundToggle = useSelector(selectBackgroundToggle);
   const dispatch = useDispatch();
 
@@ -183,12 +178,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
               <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
                 <p className='settings-unit-selector'>{!secondsPreference ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
               </button>
-              <p className='settings-label'>Goal Buttons:</p>
-              <button className='settings-options' onClick={() => dispatch(toggleAllBtns())}>
-                <p className='settings-unit-selector'>{!goalAllBtns ? <><strong>Off</strong> / On</> : <>Off / <strong>On</strong></>}</p>
-              </button>
             </div>
-            <br />
             <BackgroundIndexControl />
             <div id='settings-contact'>
               <p>

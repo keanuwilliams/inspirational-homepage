@@ -9,7 +9,7 @@ const getCurrentIndex = () => {
   const json = localStorage.getItem('currentBackgroundIndex');
   if (json !== null) {
     const currentIndex = JSON.parse(json);
-    if (currentIndex >= 0 && currentIndex < 10) {
+    if (currentIndex >= 0 && currentIndex < 25) {
       return currentIndex;
     }
   }
@@ -37,6 +37,7 @@ export const fetchPictures = createAsyncThunk(
   async () => {
     const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
     let orientation = '&orientation=';
+    const items = '&per_page=25'
     // fetch pictures based on screen orientation
     if (window.screen.width > window.screen.height) {
       orientation += 'landscape';
@@ -45,7 +46,7 @@ export const fetchPictures = createAsyncThunk(
     } else {
       orientation += 'squarish';
     }
-    const pictures = fetch(`https://api.unsplash.com/topics/wallpapers/photos/?client_id=${API_KEY}${orientation}`)
+    const pictures = fetch(`https://api.unsplash.com/topics/wallpapers/photos/?client_id=${API_KEY}${orientation}${items}`)
     .then((response) => response.json());
     return pictures;
   }
