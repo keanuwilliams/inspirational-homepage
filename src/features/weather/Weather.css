@@ -1,5 +1,6 @@
 .weather, #weather-loading-text {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
 }
 
 .weather-text {
@@ -12,6 +13,10 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .weather, #weather-loading-text {
+    margin: 1rem auto;
+  }
+
   #weather-icon {
     vertical-align: -5px;
     width: 35px;
