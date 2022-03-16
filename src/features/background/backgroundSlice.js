@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const num_of_backgrounds = 15;
+
 /**
  * Grabs the locally stored background index from where the user has left off.
  * If nothing is found, return the first index.
@@ -9,7 +11,7 @@ const getCurrentIndex = () => {
   const json = localStorage.getItem('currentBackgroundIndex');
   if (json !== null) {
     const currentIndex = JSON.parse(json);
-    if (currentIndex >= 0 && currentIndex < 25) {
+    if (currentIndex >= 0 && currentIndex < num_of_backgrounds) {
       return currentIndex;
     }
   }
@@ -37,14 +39,14 @@ export const fetchPictures = createAsyncThunk(
   async () => {
     const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
     let orientation = '&orientation=';
-    const items = '&per_page=25'
+    const items = `&per_page=${num_of_backgrounds}`
     // fetch pictures based on screen orientation
     if (window.screen.width > window.screen.height) {
       orientation += 'landscape';
     } else if (window.screen.width < window.screen.height) {
       orientation += 'portrait';
     } else {
-      orientation += 'squarish';
+      orientation += 'landscape';
     }
     const pictures = fetch(`https://api.unsplash.com/topics/wallpapers/photos/?client_id=${API_KEY}${orientation}${items}`)
     .then((response) => response.json());
