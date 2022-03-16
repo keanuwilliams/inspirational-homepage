@@ -1,0 +1,9 @@
+.date {
+  font-size: 35px;
+}
+
+@media only screen and (max-width: 500px) {
+  .date {
+      font-size: 25px;
+  }
+}

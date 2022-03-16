@@ -11,7 +11,7 @@
   width: 50px;
 }
 
-@media only screen and (max-width: 910px) {
+@media only screen and (max-width: 500px) {
   #weather-icon {
     vertical-align: -5px;
     width: 35px;

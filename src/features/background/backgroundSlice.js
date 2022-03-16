@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const num_of_backgrounds = 15;
+const num_of_backgrounds = 25;
 
 /**
  * Grabs the locally stored background index from where the user has left off.

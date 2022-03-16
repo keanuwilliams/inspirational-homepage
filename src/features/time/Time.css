@@ -1,10 +1,9 @@
 .time {
     color: white;
     font-size: 70px;
-    width: 100vw;
 }
 
-@media only screen and (max-width: 910px) {
+@media only screen and (max-width: 500px) {
     .time {
         font-size: 60px;
     }
