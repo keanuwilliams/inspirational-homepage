@@ -6,12 +6,10 @@ import Button from '../components/Button/Button';
 import Spinner from '../components/Spinner/Spinner';
 import Greeting from '../features/greeting/Greeting';
 import Time from '../features/time/Time';
-import Goals from '../features/goals/Goals';
 import Quote from '../features/quote/Quote';
 import Date from '../features/date/Date';
 import WeatherContainer from '../features/weather/WeatherContainer';
 import Settings from '../features/settings/Settings';
-import NewGoalsForm from '../components/NewGoalsForm';
 import {
   fetchPictures,
   selectCurrentIndex,
@@ -83,7 +81,7 @@ export default function Homepage({ currentVersion }) {
   }
 
   const RightIndexBtn = () => {
-    if (currentIndex === 9) return <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+    if (currentIndex === pictures.length-1) return <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
     return <Button primary onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
   }
 
@@ -101,16 +99,13 @@ export default function Homepage({ currentVersion }) {
             <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} name={name} setName={setName} />
             {backgroundToggle && <RightIndexBtn />}
           </div>
-          <div className='info-container'>
-            <Greeting name={name} />
-            <div id='date-time-container'>
-              <Date />&nbsp;<Time />
-            </div>
+          <div className='weather-container'>
             <WeatherContainer weather={weather} setWeather={setWeather} />
           </div>
-          <div className='goal-container'>
-            <NewGoalsForm />
-            <Goals />
+          <div className='info-container'>
+            <Date /><br/>
+            <Time />
+            <Greeting name={name}/>
           </div>
           <Quote />
         </>

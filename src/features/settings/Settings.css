@@ -47,7 +47,7 @@
 }
 
 #cog {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #settings-title {
@@ -124,7 +124,7 @@
   font-size: 12px;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
   #settings-btn {
     margin: 1rem;
   }
