@@ -182,17 +182,6 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
             <BackgroundIndexControl />
             <div id='settings-contact'>
               <p>
-                Check us out on&nbsp;
-                <a
-                  href='https://github.com/keanuwilliams/inspirational-homepage'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  Github
-                </a>
-                &nbsp;for all our updates on future releases.
-              </p>
-              <p>
                 Are you having trouble? Check out the help docs&nbsp;
                 <a
                   href='https://github.com/keanuwilliams/inspirational-homepage/wiki/Help'
@@ -203,6 +192,14 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
                 </a>
                 .
               </p>
+              <p>If you are enjoying Inspirational Homepage and want to support the creator, feel free to donate using the link below.</p>
+              <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <input type="hidden" name="business" value="648NASS5FJKVS" />
+                <input type="hidden" name="no_recurring" value="1" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input id='paypal' type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+              </form>
             </div>
             <div id='settings-app-version'>
               <p>Inspirational Homepage v{currentVersion}</p>
