@@ -106,7 +106,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
             <br />
             {backgroundToggle &&
               <>
-                <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p>
+                <p id='settings-index'>{currentIndex + 1} / {pictures.length}</p> 
                 <div id='settings-background-creds'>
                   <p style={{ display: 'inline' }}>Photo by </p>
                   <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
@@ -193,7 +193,7 @@ const Settings = ({ currentVersion, backgroundStatus, weather, name, setName }) 
                 .
               </p>
               <p>If you are enjoying Inspirational Homepage and want to support the creator, feel free to donate using the link below.</p>
-              <form action="https://www.paypal.com/donate" method="post" target="_top">
+              <form action="https://www.paypal.com/donate" method="post" target='_blank'>
                 <input type="hidden" name="business" value="648NASS5FJKVS" />
                 <input type="hidden" name="no_recurring" value="1" />
                 <input type="hidden" name="currency_code" value="USD" />
