@@ -80,6 +80,7 @@ export default function WeatherContainer({ weather, setWeather }) {
     setLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
+        setLoading(true);
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
           .then((response) => response.json())
           .then((data) => {
@@ -89,12 +90,14 @@ export default function WeatherContainer({ weather, setWeather }) {
             setLoading(false);
           })
       });
+      setLoading(false);
     }
     // Update every 15 minutes
     setInterval(() => {
       setLoading(true);
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
+          setLoading(true);
           fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
             .then((response) => response.json())
             .then((data) => {
@@ -104,6 +107,7 @@ export default function WeatherContainer({ weather, setWeather }) {
               setLoading(false);
             })
         });
+        setLoading(false);
       }
     }, 900000);
   }, [setWeatherCallback]); // dependency array left blank, since fetchWeather is being updated using setInterval
