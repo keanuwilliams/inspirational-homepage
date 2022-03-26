@@ -46,7 +46,7 @@
   font-size: 20px;
 }
 
-#cog {
+#cog-icon {
   font-size: 20px;
 }
 
@@ -68,16 +68,14 @@
   margin: 1.75rem auto 0;
 }
 
-.settings-unit-selector, #settings-index {
+.settings-unit-selector {
   left: 50%;
   letter-spacing: 1px;
   font-weight: 400;
   font-size: 22px;
   line-height: 24px;
-}
-
-#settings-index {
-  display: inline;
+  margin: 0 auto -0.25rem;
+  color: #000;
 }
 
 .settings-subtitle {
@@ -92,24 +90,19 @@
   font-size: 16px;
 }
 
-.settings-unit-selector {
-  margin: 0 auto -0.25rem;
-  color: #000;
+#settings-name-input {
+  width: 150px;
+  margin-left: 32px;
 }
 
-#settings-background-creds {
-  text-decoration: none;
-  margin: 0.5rem auto;
-}
-
-#settings-name-edit-btn {
+.settings-unit-selector, .settings-edit-btn {
   display: inline;
-  margin: 2rem auto 0.6rem;
 }
 
-#settings-name-subtitle {
-  display: inline;
-  margin: 0 0.5rem auto 2rem;
+#edit-icon, #check-icon {
+  font-size: 14px;
+  margin: 0.25rem auto;
+  color: black;
 }
 
 #settings-app-version {
@@ -135,11 +128,7 @@
     font-size: 14px;
   }
 
-  .settings-unit-selector, #settings-index {
+  .settings-unit-selector {
     font-size: 20px;
-  }
-
-  #settings-name-input {
-    width: 250px;
   }
 }

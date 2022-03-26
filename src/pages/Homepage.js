@@ -75,13 +75,27 @@ export default function Homepage({ currentVersion }) {
     );
   }
 
+  const BackgroundInfo = () => {
+    if (backgroundToggle && backgroundStatus === 'succeeded') {
+      return (
+        <div id='background-creds'>
+          <p style={{ display: 'inline' }}>Photo by </p>
+          <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
+          <p style={{ display: 'inline' }}> on </p>
+          <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
+        </div>
+      );
+    }
+    return <></>;
+  }
+
   const LeftIndexBtn = () => {
     if (currentIndex === 0) return <Button disabled onClick={() => dispatch(decrementIndex())} contents={leftArrow} />;
     return <Button primary onClick={() => dispatch(decrementIndex())} contents={leftArrow} />;
   }
 
   const RightIndexBtn = () => {
-    if (currentIndex === pictures.length-1) return <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
+    if (currentIndex === pictures.length - 1) return <Button disabled onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
     return <Button primary onClick={() => dispatch(incrementIndex())} contents={rightArrow} />
   }
 
@@ -96,16 +110,17 @@ export default function Homepage({ currentVersion }) {
           <div className='background-filter' />
           <div id='homepage-btns'>
             {backgroundToggle && <LeftIndexBtn />}
-            <Settings currentVersion={currentVersion} backgroundStatus={backgroundStatus} weather={weather} name={name} setName={setName} />
+            <Settings currentVersion={currentVersion} weather={weather} name={name} setName={setName} />
             {backgroundToggle && <RightIndexBtn />}
           </div>
           <div className='weather-container'>
             <WeatherContainer weather={weather} setWeather={setWeather} />
+            <BackgroundInfo />
           </div>
           <div className='info-container'>
-            <Date /><br/>
+            <Date /><br />
             <Time />
-            <Greeting name={name}/>
+            <Greeting name={name} />
           </div>
           <Quote />
         </>

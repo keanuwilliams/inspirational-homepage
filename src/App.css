@@ -1,3 +1,7 @@
+a, a:hover, a:active, a:visited {
+  color: white;
+}
+
 .background, .background-filter {
   width: 100vw;
   height: 100vh;
@@ -22,8 +26,12 @@
   filter: blur(5px);
 }
 
+#background-creds {
+  font-size: 20px;
+}
+
 .weather-container {
-  margin: 0 auto;
+  margin: 1.5rem auto auto 1rem;
   font-size: 30px;
   color: rgba(235, 235, 235, 0.9);
   text-decoration: none;
@@ -61,6 +69,10 @@
 @media only screen and (max-width: 500px) {
   .App {
     margin: auto;
+  }
+
+  #background-creds {
+    font-size: 15px;
   }
 
   .weather-container {
