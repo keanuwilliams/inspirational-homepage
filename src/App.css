@@ -76,7 +76,7 @@ a, a:hover, a:active, a:visited {
   }
 
   .weather-container {
-    margin-top: 2.5rem;
+    margin: 2.5rem auto;
     font-size: 25px;
   }
 
