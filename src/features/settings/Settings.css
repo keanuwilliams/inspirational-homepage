@@ -12,10 +12,8 @@
   position: relative;
   text-align: center;
   width: 70%;
-  margin: 0 auto;
-  height: auto;
-  max-height: 85vh;
-  margin-top: calc(100vh - 92vh - 25px);
+  max-height: 70vh;
+  margin: calc(100vh - 92vh - 25px) auto 0;
   background: #fff;
   border-radius: 20px;
   padding: 15px 20px;
@@ -116,6 +114,24 @@
 }
 
 @media only screen and (max-width: 500px) {
+  #settings-btn {
+    margin: 1rem;
+  }
+
+  .settings-subtitle {
+    font-size: 22px;
+  }
+
+  .settings-label {
+    font-size: 14px;
+  }
+
+  .settings-unit-selector {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
   #settings-btn {
     margin: 1rem;
   }

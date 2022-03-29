@@ -5,6 +5,12 @@
 
 @media only screen and (max-width: 500px) {
     .time {
-        font-size: 60px;
+        font-size: 55px;
     }
+}
+
+@media only screen and (max-height: 400px) {
+  .time {
+      font-size: 55px;
+  }
 }

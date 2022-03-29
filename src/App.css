@@ -72,16 +72,16 @@ a, a:hover, a:active, a:visited {
   }
 
   #background-creds {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .weather-container {
-    margin: 2.5rem auto;
-    font-size: 25px;
+    margin: 2rem auto;
+    font-size: 23px;
   }
 
   .info-container {
-    font-size: 30px;
+    font-size: 35px;
   }
 
   #homepage-btns {
@@ -91,5 +91,24 @@ a, a:hover, a:active, a:visited {
   #homepage-btns, .weather-container {
     float: none;
     text-align: center;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  #background-creds {
+    font-size: 18px;
+  }
+
+  .weather-container {
+    margin: 2rem auto;
+    font-size: 23px;
+  }
+
+  .info-container {
+    font-size: 25px;
+  }
+
+  #homepage-btns {
+    margin: -1rem auto -2rem;
   }
 }
