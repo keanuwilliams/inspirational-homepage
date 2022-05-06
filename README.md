@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/90a3329c-c9c6-42c0-87f1-added56e85ca/deploy-status)](https://app.netlify.com/sites/inspirationalhp/deploys)
 
-View the live site here: [https://inspirationalhp.netlify.app/](https://inspirationalhp.netlify.app/)
+View the live site here: [https://homepage.keanuwilliams.dev/](https://homepage.keanuwilliams.dev/)
 
 An inspirational homepage that interacts with different APIs to display the current weather, a background image, and an inspirational quote.
 
