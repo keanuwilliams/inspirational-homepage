@@ -75,8 +75,15 @@ a, a:hover, a:active, a:visited {
     font-size: 18px;
   }
 
+  #homepage-btns, .weather-container {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100vw;
+  }
+
   .weather-container {
-    margin: 2rem auto;
+    margin: 5rem auto;
     font-size: 23px;
   }
 
@@ -85,7 +92,7 @@ a, a:hover, a:active, a:visited {
   }
 
   #homepage-btns {
-    margin: 1rem auto -2rem;
+    margin: 1rem auto;
   }
 
   #homepage-btns, .weather-container {
