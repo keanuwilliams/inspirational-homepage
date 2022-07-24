@@ -1,8 +1,3 @@
-.weather, #weather-loading-text {
-  margin-top: 1.5rem;
-  margin-left: 1rem;
-}
-
 .weather-text {
   display: inline;
 }
@@ -14,7 +9,18 @@
 
 @media only screen and (max-width: 500px) {
   .weather, #weather-loading-text {
-    margin: 1rem auto;
+    margin: 1rem auto 0;
+  }
+
+  #weather-icon {
+    vertical-align: -5px;
+    width: 35px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .weather, #weather-loading-text {
+    margin: 0 auto;
   }
 
   #weather-icon {
