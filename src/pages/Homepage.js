@@ -79,11 +79,11 @@ export default function Homepage({ currentVersion }) {
     if (backgroundToggle && backgroundStatus === 'succeeded') {
       return (
         <div id='background-creds'>
-          <a href={pictures[currentIndex].links.download} target='_blank' rel='noreferrer'>Photo</a>
+          <a href={pictures[currentIndex].links.download + '?utm_source=your_app_name&utm_medium=referral'} target='_blank' rel='noreferrer'>Photo</a>
           <p style={{ display: 'inline' }}> by </p>
-          <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
+          <a href={pictures[currentIndex].user.links.html + '?utm_source=your_app_name&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
           <p style={{ display: 'inline' }}> on </p>
-          <a href='https://unsplash.com/?utm_source=inspirational_homepage&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
+          <a href='https://unsplash.com/?utm_source=your_app_name&utm_medium=referral' target='_blank' rel='noreferrer'>Unsplash</a>
         </div>
       );
     }
