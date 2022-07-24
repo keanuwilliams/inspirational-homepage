@@ -79,7 +79,7 @@ export default function Homepage({ currentVersion }) {
     if (backgroundToggle && backgroundStatus === 'succeeded') {
       return (
         <div id='background-creds'>
-          <a href={pictures[currentIndex].links.download}>Photo</a>
+          <a href={pictures[currentIndex].links.download} target='_blank' rel='noreferrer'>Photo</a>
           <p style={{ display: 'inline' }}> by </p>
           <a href={pictures[currentIndex].user.links.html + '?utm_source=inspirational_homepage&utm_medium=referral'} target='_blank' rel='noreferrer'>{pictures[currentIndex].user.name}</a>
           <p style={{ display: 'inline' }}> on </p>
