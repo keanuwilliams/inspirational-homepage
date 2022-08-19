@@ -3,6 +3,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const MAX_QUOTE_LENGTH = 100;
 
 /**
+ * Grabs the locally stored quotes toggle preference to determine whether
+ * or not to show the fetched quotes.
+ * @returns {boolean} the last saved preference of the
+ */
+ const getTogglePreference = () => {
+  const json = localStorage.getItem('quoteToggle');
+  if (json !== null) {
+    return JSON.parse(json);
+  }
+  return true;
+}
+
+/**
  * Fetches the quotes from the type.fit API
  */
 export const fetchQuotes = createAsyncThunk(
@@ -24,6 +37,7 @@ export const quoteSlice = createSlice({
     allQuotes: [],
     author: '',
     status: 'idle',
+    toggle: getTogglePreference(),
   },
   reducers: {
     generateQuote: (state) => {
@@ -39,6 +53,11 @@ export const quoteSlice = createSlice({
           state.author = "Anonymous";
         }
       }
+    },
+    toggleQuote: (state) => {
+      state.toggle = !state.toggle;
+      const json = JSON.stringify(state.toggle);
+      localStorage.setItem('quoteToggle', json);
     }
   },
   extraReducers: {
@@ -69,5 +88,6 @@ export const quoteSlice = createSlice({
 export const selectQuote = (state) => state.quote.quote;
 export const selectAuthor = (state) => state.quote.author;
 export const selectStatus = (state) => state.quote.status;
-export const { generateQuote } = quoteSlice.actions;
+export const selectQuoteToggle = (state) => state.quote.toggle;
+export const { generateQuote, toggleQuote } = quoteSlice.actions;
 export default quoteSlice.reducer;
