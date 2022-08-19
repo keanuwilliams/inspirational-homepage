@@ -55,10 +55,9 @@
 }
 
 .settings-options {
-  margin: -2rem auto;
+  margin: 0 auto;
   background: none;
   border: none;
-  padding: none;
   cursor: pointer;
 }
 
