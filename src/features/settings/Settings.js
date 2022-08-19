@@ -79,7 +79,7 @@ const Settings = ({ currentVersion, weather, name, setName }) => {
         <>
           <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
             <p className='settings-unit-selector'>Temperature Units: {tempUnits === 'F' ? <>Fahrenheit</> : <>Celsius</>}</p>
-          </button>
+          </button><br/>
         </>
       );
     }
@@ -148,7 +148,7 @@ const Settings = ({ currentVersion, weather, name, setName }) => {
             </div>
             <div className='settings-unit-control'>
               <p className='settings-subtitle'>Preferences</p>
-              <WeatherSection /><br/>
+              <WeatherSection />
               <button className='settings-options' onClick={() => dispatch(toggleTime())}>
                 <p className='settings-unit-selector'>Time Format: {!militaryTime ? <>12 Hour</> : <>24 Hour</>}</p>
               </button>
