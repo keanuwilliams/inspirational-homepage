@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const MAX_QUOTE_LENGTH = 100;
+
 /**
  * Fetches the quotes from the type.fit API
  */
 export const fetchQuotes = createAsyncThunk(
   'quote/fetchQuotes',
   async () => {
-    const quotes = fetch('https://type.fit/api/quotes')
+    const quotes = fetch('https://programming-quotes-api.herokuapp.com/quotes')
       .then((response) => response.json());
     return quotes;
   }
@@ -26,8 +28,12 @@ export const quoteSlice = createSlice({
   reducers: {
     generateQuote: (state) => {
       if (state.allQuotes.length > 0) {
-        const index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = state.allQuotes[index].text;
+        let index = Math.floor(Math.random() * state.allQuotes.length);
+        state.quote = state.allQuotes[index].en;
+        while (state.quote.length > MAX_QUOTE_LENGTH) {
+          index = Math.floor(Math.random() * state.allQuotes.length);
+          state.quote = state.allQuotes[index].en;
+        }
         state.author = state.allQuotes[index].author;
         if (state.author === null) {
           state.author = "Anonymous";
@@ -42,8 +48,12 @@ export const quoteSlice = createSlice({
     [fetchQuotes.fulfilled]: (state, action) => {
       state.status = 'succeeded';
       state.allQuotes = action.payload;
-      const index = Math.floor(Math.random() * state.allQuotes.length);
-      state.quote = action.payload[index].text;
+      let index = Math.floor(Math.random() * state.allQuotes.length);
+      state.quote = action.payload[index].en;
+      while (state.quote.length > MAX_QUOTE_LENGTH) {
+        index = Math.floor(Math.random() * state.allQuotes.length);
+        state.quote = action.payload[index].en;
+      }
       state.author = action.payload[index].author;
       if (state.author === null) {
         state.author = "Anonymous";
