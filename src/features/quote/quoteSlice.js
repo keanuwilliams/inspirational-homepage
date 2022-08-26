@@ -21,7 +21,7 @@ const MAX_QUOTE_LENGTH = 100;
 export const fetchQuotes = createAsyncThunk(
   'quote/fetchQuotes',
   async () => {
-    const quotes = fetch('https://programming-quotes-api.herokuapp.com/quotes')
+    const quotes = fetch('https://type.fit/api/quotes')
       .then((response) => response.json());
     return quotes;
   }
@@ -43,10 +43,10 @@ export const quoteSlice = createSlice({
     generateQuote: (state) => {
       if (state.allQuotes.length > 0) {
         let index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = state.allQuotes[index].en;
+        state.quote = state.allQuotes[index].text;
         while (state.quote.length > MAX_QUOTE_LENGTH) {
           index = Math.floor(Math.random() * state.allQuotes.length);
-          state.quote = state.allQuotes[index].en;
+          state.quote = state.allQuotes[index].text;
         }
         state.author = state.allQuotes[index].author;
         if (state.author === null) {
@@ -68,10 +68,10 @@ export const quoteSlice = createSlice({
       state.status = 'succeeded';
       state.allQuotes = action.payload;
       let index = Math.floor(Math.random() * state.allQuotes.length);
-      state.quote = action.payload[index].en;
+      state.quote = action.payload[index].text;
       while (state.quote.length > MAX_QUOTE_LENGTH) {
         index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = action.payload[index].en;
+        state.quote = action.payload[index].text;
       }
       state.author = action.payload[index].author;
       if (state.author === null) {
