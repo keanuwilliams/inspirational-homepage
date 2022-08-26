@@ -17,6 +17,7 @@ import {
   selectBackgroundToggle,
   toggleBackground
 } from '../background/backgroundSlice';
+import { selectQuoteToggle, toggleQuote } from '../quote/quoteSlice';
 import './Settings.css';
 
 /**
@@ -33,6 +34,7 @@ const Settings = ({ currentVersion, weather, name, setName }) => {
   const militaryTime = useSelector(selectMilitaryTime);
   const secondsPreference = useSelector(selectSecondsPreference);
   const backgroundToggle = useSelector(selectBackgroundToggle);
+  const quoteToggle = useSelector(selectQuoteToggle);
   const dispatch = useDispatch();
 
   const settingsIcon = <FontAwesomeIcon id="cog-icon" icon={faCog} />;
@@ -75,10 +77,9 @@ const Settings = ({ currentVersion, weather, name, setName }) => {
     if (weather) {
       return (
         <>
-          <p className='settings-label'>Temperature Units: </p>
           <button className='settings-options' onClick={() => dispatch(toggleTempUnits())}>
-            <p className='settings-unit-selector'>{tempUnits === 'F' ? <><strong>Fahrenheit</strong> / Celsius</> : <>Fahrenheit / <strong>Celsius</strong></>}</p>
-          </button>
+            <p className='settings-unit-selector'>Temperature Units: {tempUnits === 'F' ? <>Fahrenheit</> : <>Celsius</>}</p>
+          </button><br/>
         </>
       );
     }
@@ -147,18 +148,19 @@ const Settings = ({ currentVersion, weather, name, setName }) => {
             </div>
             <div className='settings-unit-control'>
               <p className='settings-subtitle'>Preferences</p>
-              <p className='settings-label'>Display Background:</p>
-              <button className='settings-options' onClick={() => dispatch(toggleBackground())}>
-                <p className='settings-unit-selector'>{!backgroundToggle ? <><strong>No</strong> / Yes</> : <>No / <strong>Yes</strong></>}</p>
-              </button>
               <WeatherSection />
-              <p className='settings-label'>Time Format:</p>
               <button className='settings-options' onClick={() => dispatch(toggleTime())}>
-                <p className='settings-unit-selector'>{!militaryTime ? <><strong>12 Hour</strong> / 24 Hour</> : <>12 Hour / <strong>24 Hour</strong></>}</p>
+                <p className='settings-unit-selector'>Time Format: {!militaryTime ? <>12 Hour</> : <>24 Hour</>}</p>
               </button>
-              <p className='settings-label'>Display Seconds:</p>
+              <p className='settings-subtitle'>Display</p>
+              <button className='settings-options' onClick={() => dispatch(toggleBackground())}>
+                <p className='settings-unit-selector'>Background: {!backgroundToggle ? <>No</> : <>Yes</>}</p>
+              </button><br/>
+              <button className='settings-options' onClick={() => dispatch(toggleQuote())}>
+                <p className='settings-unit-selector'>Quote: {!quoteToggle ? <>No</> : <>Yes</>}</p>
+              </button><br/>
               <button className='settings-options' onClick={() => dispatch(toggleSeconds())}>
-                <p className='settings-unit-selector'>{!secondsPreference ? <><strong>No</strong> / Yes</> : <>No / <strong>Yes</strong></>}</p>
+                <p className='settings-unit-selector'>Seconds: {!secondsPreference ? <>No</> : <>Yes</>}</p>
               </button>
             </div>
             <div id='settings-contact'>

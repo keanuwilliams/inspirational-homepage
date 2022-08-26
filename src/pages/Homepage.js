@@ -19,7 +19,10 @@ import {
   decrementIndex,
   selectStatus as bStatus,
 } from '../features/background/backgroundSlice';
-import { selectStatus as qStatus } from '../features/quote/quoteSlice';
+import { 
+  selectStatus as qStatus,
+  selectQuoteToggle,
+} from '../features/quote/quoteSlice';
 import '../App.css';
 
 /**
@@ -33,6 +36,7 @@ export default function Homepage({ currentVersion }) {
   const currentIndex = useSelector(selectCurrentIndex);
   const backgroundStatus = useSelector(bStatus);
   const backgroundToggle = useSelector(selectBackgroundToggle);
+  const quoteToggle = useSelector(selectQuoteToggle);
   const quoteStatus = useSelector(qStatus);
   const dispatch = useDispatch();
   const leftArrow = <FontAwesomeIcon className="homepage-arrow-icon" icon={faArrowLeft} />;
@@ -123,7 +127,7 @@ export default function Homepage({ currentVersion }) {
             <Time />
             <Greeting name={name} />
           </div>
-          <Quote />
+          {quoteToggle && <Quote />}
         </>
       )}
     </>
