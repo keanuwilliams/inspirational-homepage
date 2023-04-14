@@ -1,6 +1,6 @@
 {
   "name": "inspirational-homepage",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -41,6 +41,6 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.5.4"
+    "cypress": "^9.7.0"
   }
 }
