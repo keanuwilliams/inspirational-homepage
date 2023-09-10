@@ -5,7 +5,7 @@ const MAX_QUOTE_LENGTH = 100;
 /**
  * Grabs the locally stored quotes toggle preference to determine whether
  * or not to show the fetched quotes.
- * @returns {boolean} the last saved preference of the
+ * @returns {boolean} the last saved preference of the quote
  */
  const getTogglePreference = () => {
   const json = localStorage.getItem('quoteToggle');
@@ -13,6 +13,37 @@ const MAX_QUOTE_LENGTH = 100;
     return JSON.parse(json);
   }
   return true;
+}
+
+/**
+ * Gets a random index given the length of the array of quotes.
+ * @param {Array} allQuotes array of fetched quotes from API
+ * @returns {number} a random index
+ */
+const getRandomIndex = (allQuotes) => {
+    return Math.floor(Math.random() * allQuotes.length);
+}
+
+/**
+ * Gets a single quote from the array of quotes.
+ * @param {Array} allQuotes array of fetched quotes from API
+ * @returns {object} a single object in the same format as quotes array
+ */
+
+const getSingleQuote = (allQuotes) => {
+    let quote = allQuotes[getRandomIndex(allQuotes)];
+
+    while (quote.text.length > MAX_QUOTE_LENGTH) {
+      quote = allQuotes[getRandomIndex(allQuotes)];
+    }
+
+    if (!quote.author || quote.author === 'type.fit') {
+      quote.author = 'Anonymous';
+    } else if (quote.author.includes('type.fit')) {
+      quote.author = quote.author.split(',')[0];
+    }
+
+    return quote;
 }
 
 /**
@@ -33,26 +64,17 @@ export const fetchQuotes = createAsyncThunk(
 export const quoteSlice = createSlice({
   name: 'quote',
   initialState: {
-    quote: '',
+    quote: {
+      'author': '',
+      'text': ''
+    },
     allQuotes: [],
-    author: '',
     status: 'idle',
     toggle: getTogglePreference(),
   },
   reducers: {
     generateQuote: (state) => {
-      if (state.allQuotes.length > 0) {
-        let index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = state.allQuotes[index].text;
-        while (state.quote.length > MAX_QUOTE_LENGTH) {
-          index = Math.floor(Math.random() * state.allQuotes.length);
-          state.quote = state.allQuotes[index].text;
-        }
-        state.author = state.allQuotes[index].author;
-        if (state.author === null) {
-          state.author = "Anonymous";
-        }
-      }
+      state.quote = getSingleQuote(state.allQuotes);
     },
     toggleQuote: (state) => {
       state.toggle = !state.toggle;
@@ -67,16 +89,7 @@ export const quoteSlice = createSlice({
     [fetchQuotes.fulfilled]: (state, action) => {
       state.status = 'succeeded';
       state.allQuotes = action.payload;
-      let index = Math.floor(Math.random() * state.allQuotes.length);
-      state.quote = action.payload[index].text;
-      while (state.quote.length > MAX_QUOTE_LENGTH) {
-        index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = action.payload[index].text;
-      }
-      state.author = action.payload[index].author;
-      if (state.author === null) {
-        state.author = "Anonymous";
-      }
+      state.quote = getSingleQuote(state.allQuotes);
     },
     [fetchQuotes.rejected]: (state) => {
       state.status = 'failed';
@@ -86,7 +99,6 @@ export const quoteSlice = createSlice({
 
 // Exports
 export const selectQuote = (state) => state.quote.quote;
-export const selectAuthor = (state) => state.quote.author;
 export const selectStatus = (state) => state.quote.status;
 export const selectQuoteToggle = (state) => state.quote.toggle;
 export const { generateQuote, toggleQuote } = quoteSlice.actions;
