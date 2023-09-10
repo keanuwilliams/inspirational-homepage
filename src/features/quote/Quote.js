@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectQuote,
-  selectAuthor,
   fetchQuotes,
   selectStatus,
   generateQuote
@@ -12,11 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 /**
- * Displays the fetched quote onto the screen within a round rectangle. 
+ * Displays the fetched quote onto the screen within a round rectangle.
  */
 export default function Quote() {
   const quote = useSelector(selectQuote);
-  const author = useSelector(selectAuthor);
   const status = useSelector(selectStatus);
   const dispatch = useDispatch();
 
@@ -38,8 +36,8 @@ export default function Quote() {
       {status === 'loading' ? <p>Loading Quote...</p> : (
         <>
           <button id='sync-btn' onClick={() => dispatch(generateQuote())}>{syncIcon}</button>
-          <p id='quote'>"{quote}"</p>
-          <p><b>{author}</b></p>
+          <p id='quote'>"{quote.text}"</p>
+          <p><b>{quote.author}</b></p>
         </>
       )}
     </div>
