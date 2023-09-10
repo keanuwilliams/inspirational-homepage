@@ -16,6 +16,42 @@ const MAX_QUOTE_LENGTH = 100;
 }
 
 /**
+ * Gets a random index given the length of the array of quotes.
+ * @returns {number} a random index
+ */
+const getRandomIndex = (allQuotes) => {
+    return Math.floor(Math.random() * allQuotes.length);
+}
+
+/**
+ * Gets a single quote from the array of quotes.
+ * @returns {object} a single object in the same format as quotes array
+ */
+
+const getSingleQuote = (allQuotes) => {
+    let index = getRandomIndex(allQuotes);
+    let quote = allQuotes[index].text;
+
+    while (quote.length > MAX_QUOTE_LENGTH) {
+      index = getRandomIndex(allQuotes);
+      quote = allQuotes[index].text;
+    }
+
+    let author = allQuotes[index].author;
+
+    if (!author || author === 'type.fit') {
+      author = 'Anonymous';
+    } else if (author.includes('type.fit')) {
+      author = author.split(',')[0];
+    }
+
+    return {
+      'author': author,
+      'text': quote
+    };
+}
+
+/**
  * Fetches the quotes from the type.fit API
  */
 export const fetchQuotes = createAsyncThunk(
@@ -41,18 +77,9 @@ export const quoteSlice = createSlice({
   },
   reducers: {
     generateQuote: (state) => {
-      if (state.allQuotes.length > 0) {
-        let index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = state.allQuotes[index].text;
-        while (state.quote.length > MAX_QUOTE_LENGTH) {
-          index = Math.floor(Math.random() * state.allQuotes.length);
-          state.quote = state.allQuotes[index].text;
-        }
-        state.author = state.allQuotes[index].author;
-        if (state.author === null) {
-          state.author = "Anonymous";
-        }
-      }
+      const quote = getSingleQuote(state.allQuotes);
+      state.quote = quote.text;
+      state.author = quote.author;
     },
     toggleQuote: (state) => {
       state.toggle = !state.toggle;
@@ -67,16 +94,9 @@ export const quoteSlice = createSlice({
     [fetchQuotes.fulfilled]: (state, action) => {
       state.status = 'succeeded';
       state.allQuotes = action.payload;
-      let index = Math.floor(Math.random() * state.allQuotes.length);
-      state.quote = action.payload[index].text;
-      while (state.quote.length > MAX_QUOTE_LENGTH) {
-        index = Math.floor(Math.random() * state.allQuotes.length);
-        state.quote = action.payload[index].text;
-      }
-      state.author = action.payload[index].author;
-      if (state.author === null) {
-        state.author = "Anonymous";
-      }
+      const quote = getSingleQuote(state.allQuotes);
+      state.quote = quote.text;
+      state.author = quote.author;
     },
     [fetchQuotes.rejected]: (state) => {
       state.status = 'failed';
